@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco Scan</title>
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="header-wapper">
+            <div class="header-flex">
+                <h1 class="logo">
+                    <img src="./images/Group 1.png" alt="">Eco Scan 
+                </h1>
+                <nav>
+                    <a href="../Главная/main.html">Главная</a>
+                    <a href="#about">О нас</a>
+                    <a class="nav-item contact" id="contactBtn">Связь с нами</a>
+                    <a href="#profile" id="profileLink"><button class="welcome-btn1 primary">Личный кабинет</button></a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Основное содержимое -->
+    <main class="container">
+        <!-- Секция личного кабинета -->
+        <section class="profile-section">
+            
+            <div class="profile-header">
+                <h2>Личный кабинет</h2>
+            </div>
+            
+            <div class="profile-content">
+                <div class="user-info">
+                    <div class="avatar">
+                        <img src="./images/Group 1.png" alt="Аватар">
+                    </div>
+                    <div class="user-details">
+                        <h3>Нуржик</h3>
+                        <p>ecoscan@gmail.com</p>
+                        <p class="member-since">Участник с 15.07.2023</p>
+                    </div>
+                </div>
+                
+                <div class="bonus-card">
+                    <h3>Ваши бонусы</h3>
+                    <div class="balance">
+                        1500 баллов
+                        <small>(1 балл = 1 тенге)</small>
+                    </div>
+                    
+                    <div class="conversion-form">
+                        <h4>Конвертация баллов</h4>
+                        <div class="input-group">
+                            <input type="number" min="1" max="1500" placeholder="Сумма">
+                            <button class="primary">Конвертировать</button>
+                        </div>
+                        
+                        <div class="payment-method">
+                            <label>Способ выплаты:</label>
+                            <select>
+                                <option value="card">Банковская карта</option>
+                                <option value="qiwi">Halyk</option>
+                            </select>
+                            <input type="text" placeholder="Номер карты/кошелька">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="transactions">
+                    <h3>История операций</h3>
+                    <div class="transaction-list">
+                        <div class="transaction-item">
+                            <div class="transaction-date">05.08.2023</div>
+                            <div class="transaction-amount">+300 баллов</div>
+                            <div class="transaction-desc">За экологичную утилизацию</div>
+                        </div>
+                        <div class="transaction-item">
+                            <div class="transaction-date">01.08.2023</div>
+                            <div class="transaction-amount negative">-200 баллов</div>
+                            <div class="transaction-desc">Конвертация в рубли</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+        <!-- Модальное окно -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <button class="close-btn" id="closeModal">&times;</button>
+            <h2 class="modal-title">Связь с нами</h2>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="contact-text">
+                        <strong>Контакты:</strong>
+                        <span>8 (777) 777-77-77</span>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-text">
+                        <strong>Почта:</strong>
+                        <span>yourmail@gmail.com</span>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="contact-text">
+                        <strong>Время работы:</strong>
+                        <span>Пн-Пт: 9:00 - 18:00</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+    
+
+    <script>
+        // Получаем элементы DOM
+        const contactBtn = document.getElementById('contactBtn');
+        const heroContactBtn = document.getElementById('heroContactBtn');
+        const closeModalBtn = document.getElementById('closeModal');
+        const modalOverlay = document.getElementById('modalOverlay');
+        const modal = document.querySelector('.modal');
+        
+        // Функция открытия модального окна
+        function openModal() {
+            modalOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Блокируем прокрутку фона
+        }
+        
+        // Функция закрытия модального окна
+        function closeModal() {
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = ''; // Восстанавливаем прокрутку
+        }
+        
+        // Назначаем обработчики событий для открытия
+        if (contactBtn) {
+            contactBtn.addEventListener('click', openModal);
+        }
+        
+        if (heroContactBtn) {
+            heroContactBtn.addEventListener('click', openModal);
+        }
+        
+        // Назначаем обработчики событий для закрытия
+        if (closeModalBtn) {
+            closeModalBtn.addEventListener('click', closeModal);
+        }
+        
+        // Закрытие при клике вне окна
+        if (modalOverlay) {
+            modalOverlay.addEventListener('click', function(e) {
+                if (e.target === modalOverlay) {
+                    closeModal();
+                }
+            });
+        }
+        
+        // Закрытие по клавише Esc
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+                closeModal();
+            }
+        });
+        
+        // Предотвращаем всплытие события клика внутри модального окна
+        if (modal) {
+            modal.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        }
+    </script>
+    
+    
+    <footer>
+    <div class="foot-nav">
+        <nav>
+            <a href="#welcome">Главная</a>
+            <a href="#about">О нас</a>
+            <a href="#service">Сервисы</a>
+            <a href="#contact us">Связаться с нами</a>
+        </nav>
+    </div>
+    <div>
+        <h3 class="logo">Copyright @ All right reserved</h3>
+    </div>
+    </footer>
+</body>
+
+
+</html>
