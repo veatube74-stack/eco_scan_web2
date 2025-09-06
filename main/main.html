@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco Scan - Правильная утилизация отходов</title>
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="./main.html"><h1 class="logo">
+                <img src="./images/Group 1.png" alt="Eco Scan">Eco Scan
+            </h1></a>
+            <nav>
+                <ul>
+                    <li><a href="main">Главная</a></li>
+                    <li><a href="#about">О нас</a></li>
+                    <li><a href="#">Сервисы</a></li>
+                    <li><a href="./map.html">Карта</a></li>
+                    <li><a href="#">Специалисты</a></li>
+                    <li><a href="#contact">Связь с нами</a></li>
+                </ul>
+            </nav>
+
+            <div class="auth-buttons">
+                <button class="btn btn-outline"><a href="../login panel/login.html">Вход</a></button>
+                <button class="btn btn-primary"><a href="../registration panel/register.html">Регистрация</a></button>
+            </div>
+        </div>
+    </header>
+
+
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h2>Правильная утилизация отходов с помощью сканера</h2>
+            <p>Eco Scan помогает сортировать мусорные отходы правильно. Просто сканируйте упаковку, и мы подскажем, в какой мусорный контейнер или фандомат ее отправить.</p>
+            
+            <div class="hero-buttons">
+                <button class="btn btn-secondary btn-large">
+                    <a href="./map.html"><i class="fas fa-map-marker-alt"></i> Найти фандоматы</a>
+                </button>
+            </div>
+        </div>
+    </section>
+
+
+    
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-header">
+                <h2>Наша польза на окружающую среду</h2>
+                <p>Благодаря нашим пользователям, мы вместе делаем планету чище и зеленее каждый день</p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-recycle"></i>
+                    </div>
+                    <div class="stat-number" id="stat1">542,809</div>
+                    <div class="stat-label">Правильно утилизированных отходов</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-tree"></i>
+                    </div>
+                    <div class="stat-number" id="stat2">1,240</div>
+                    <div class="stat-label">Спасенных деревьев</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-number" id="stat3">84,356</div>
+                    <div class="stat-label">Активных пользователей</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="stat-number" id="stat4">2,581</div>
+                    <div class="stat-label">Фандоматов на карте</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+     <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Eco Scan</h3>
+                    <p>Инновационное решение для правильной сортировки и утилизации отходов с помощью технологии сканирования.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Навигация</h3>
+                    <ul class="footer-links">
+                        <li><a href="main.html">Главная</a></li>
+                        <li><a href="#about">О нас</a></li>
+                        <li><a href="#">Сервисы</a></li>
+                        <li><a href="./map.html">Карта фандоматов</a></li>
+                        <li><a href="#">Специалисты</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-envelope"></i> ecoscan@gmail.com</a></li>
+                        <li><a href="#"><i class="fas fa-phone"></i> +7 (777) 777-77-77</a></li>
+                        <li><a href="#"><i class="fab fa-telegram"></i> Telegram</a></li>
+                        <li><a href="#"><i class="fa-instagram"></i> instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>Copyright © 2025 Eco Scan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script>
+        // Получаем элементы DOM
+        const contactBtn = document.getElementById('contactBtn');
+        const heroContactBtn = document.getElementById('heroContactBtn');
+
+    // Анимация счетчиков статистики
+        function infiniteCounter(element, start = 0, step = 1) {
+        let current = start;
+        
+        setInterval(() => {
+        current += step;
+        element.textContent = current.toLocaleString();
+        }, 1000); 
+       }
+
+        // Запуск анимации при загрузке страницы
+        infiniteCounter(document.getElementById("stat1"), 542809, 1);   // +1 в секунду
+        infiniteCounter(document.getElementById("stat2"), 1240, 2);     // +2 в секунду
+        infiniteCounter(document.getElementById("stat3"), 84356, 5);    // +5 в секунду
+        animateCounter(document.getElementById('stat4'), 2581, 2000);    
+    </script>
+
+</body>
+
+
+</html>

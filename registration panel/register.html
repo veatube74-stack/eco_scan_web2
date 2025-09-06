@@ -19,22 +19,69 @@
                     <img src="./images/Group 1.png" alt="">Eco Scan 
                 </h1>
                 <nav>
-                    <a href="main">Главная</a>
+                    <a href="../Главная/main.html">Главная</a>
                     <a href="#about">О нас</a>
                     <a class="nav-item contact" id="contactBtn">Связь с нами</a>
-                    <a href="../profile/profile.html"><button class="welcome-btn1 primary">Личный кабинет</button></a>
+                    <a href="../Логин/login.html" id="profileLink"><button class="welcome-btn1 primary">Личный кабинет</button></a>
                 </nav>
             </div>
         </div>
     </header>
 
-    <section>
-        <div class="map">
-            <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Acd3f6ab03fc025484a4010a0d0623e938203a13b8a25040bc167e7edabe4e08d&amp;source=constructor" width="500" height="400" frameborder="0">
+<section class="registration-section" id="welcome">
+<div class="registration-wrapper">
+    <div class="registration-txt">
+        <h2>
+            Потребляй Сканируй Сортируй
+        </h2>
+    </div>
 
-            </iframe>
+
+    <div class="registration-container">
+        <div class="registration-header">
+            <h2>Создать аккаунт</h2>
         </div>
-    </section>
+        
+        <form action="register_main.php" method="post">
+            <div class="form-group">
+                <label for="name" >Имя</label>
+                <input type="text" placeholder="name" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="name" >Фамилия</label>
+                <input type="text" placeholder="surname" id="surrname" name="surname" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" placeholder="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Логин</label>
+                <input type="text" placeholder="login" id="login" name="login" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Пароль</label>
+                <input type="password" placeholder="password" id="password" name="password" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="confirm-password">Подтвердите пароль</label>
+                <input type="password" placeholder="confirm_password" id="confirm_password" name="confirm_password" required>
+            </div>
+            
+            <button type="submit" class="welcome-btn2 primary">Зарегистрироваться</button>
+        </form>
+        
+        <div class="login-link">
+            Уже есть аккаунт? <a href="../Логин/login.html">Войти</a>
+        </div>
+    </div>
+</div>
+</section>
 
     <!-- Модальное окно -->
     <div class="modal-overlay" id="modalOverlay">
@@ -140,8 +187,8 @@
             });
         }
     </script>
-    
-    <footer>
+
+<footer>
     <div class="foot-nav">
         <nav>
             <a href="#welcome">Главная</a>
@@ -153,8 +200,10 @@
     <div>
         <h3 class="logo">Copyright @ All right reserved</h3>
     </div>
-    </footer>
+</footer>
 </body>
+
+
 
 
 </html>

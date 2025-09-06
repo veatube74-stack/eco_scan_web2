@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Карта фандоматов - Eco Scan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f9f0;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background-color: #2e7d32;
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo h1 {
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        /* Карта */
+        .map-section {
+            padding: 30px 0;
+        }
+        
+        .map-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .map-header h2 {
+            font-size: 2.2rem;
+            color: #2e7d32;
+            margin-bottom: 15px;
+        }
+        
+        .map-header p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .map-container {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .filters-panel {
+            width: 280px;
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            height: fit-content;
+        }
+        
+        .filters-panel h3 {
+            font-size: 1.3rem;
+            color: #2e7d32;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e8f5e9;
+        }
+        
+        .filter-group {
+            margin-bottom: 25px;
+        }
+        
+        .filter-group h4 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        .filter-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .filter-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .filter-option input {
+            width: 18px;
+            height: 18px;
+        }
+        
+        .filter-option label {
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        a{
+        text-decoration: none;
+        color: white;}
+        
+        .search-box {
+            margin-bottom: 25px;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            font-size: 1rem;
+        }
+        
+        .map-view {
+            flex: 1;
+            height: 600px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* Легенда карты */
+        .map-legend {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+        
+        .map-legend h4 {
+            margin-bottom: 10px;
+            font-size: 1rem;
+            color: #2e7d32;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+        
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+        }
+        
+        /* Стили для маркеров */
+        .custom-marker {
+            width: 30px;
+            height: 30px;
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .custom-marker i {
+            transform: rotate(45deg);
+            color: white;
+        }
+        
+        .plastic { background-color: #FF9800; }
+        .glass { background-color: #4CAF50; }
+        .paper { background-color: #2196F3; }
+        .metal { background-color: #9C27B0; }
+        .electronics { background-color: #607D8B; }
+        
+        /* Адаптивность */
+        @media (max-width: 900px) {
+            .map-container {
+                flex-direction: column;
+            }
+            
+            .filters-panel {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="container header-content">
+            <a href="./main.html"><div class="logo">
+                <i class="fas fa-leaf" style="font-size: 32px;"></i>
+                <h1>Eco Scan</h1>
+            </div></a>
+            
+            <nav>
+                <a href="./main.html" style="color: white; text-decoration: none;">Вернуться на главную</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Карта -->
+    <section class="map-section">
+        <div class="container">
+            <div class="map-header">
+                <h2>Карта фандоматов и пунктов приема</h2>
+                <p>Найдите ближайшие точки для правильной утилизации отходов</p>
+            </div>
+            
+            <div class="map-container">
+                <div class="filters-panel">
+                    <h3>Фильтры</h3>
+                    
+                    <div class="search-box">
+                        <input type="text" placeholder="Поиск по адресу...">
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h4>Тип отходов</h4>
+                        <div class="filter-options">
+                            <div class="filter-option">
+                                <input type="checkbox" id="plastic" checked>
+                                <label for="plastic">Пластик</label>
+                            </div>
+                            <div class="filter-option">
+                                <input type="checkbox" id="glass" checked>
+                                <label for="glass">Стекло</label>
+                            </div>
+                            <div class="filter-option">
+                                <input type="checkbox" id="paper" checked>
+                                <label for="paper">Бумага</label>
+                            </div>
+                            <div class="filter-option">
+                                <input type="checkbox" id="metal" checked>
+                                <label for="metal">Металл</label>
+                            </div>
+                            <div class="filter-option">
+                                <input type="checkbox" id="electronics" checked>
+                                <label for="electronics">Электроника</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h4>Тип пункта</h4>
+                        <div class="filter-options">
+                            <div class="filter-option">
+                                <input type="checkbox" id="fandomat" checked>
+                                <label for="fandomat">Фандоматы</label>
+                            </div>
+                            <div class="filter-option">
+                                <input type="checkbox" id="reception" checked>
+                                <label for="reception">Пункты приема</label>
+                            </div>
+                            <div class="filter-option">
+                                <input type="checkbox" id="recycling" checked>
+                                <label for="recycling">Перерабатывающие центры</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h4>Дополнительно</h4>
+                        <div class="filter-options">
+                            <div class="filter-option">
+                                <input type="checkbox" id="reward">
+                                <label for="reward">С системой вознаграждения</label>
+                            </div>
+                            <div class="filter-option">
+                                <input type="checkbox" id="open-now">
+                                <label for="open-now">Открыто сейчас</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="map-view">
+                    <div id="map"></div>
+                    <div class="map-legend">
+                        <h4>Обозначения</h4>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #FF9800;"></div>
+                            <span>Пластик</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #4CAF50;"></div>
+                            <span>Стекло</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #2196F3;"></div>
+                            <span>Бумага</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #9C27B0;"></div>
+                            <span>Металл</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #607D8B;"></div>
+                            <span>Электроника</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Инициализация карты
+        const map = L.map('map').setView([55.7558, 37.6173], 12); // Центр на Москве
+        
+        // Добавление базового слоя карты
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+        
+        // Данные фандоматов (в реальном приложении будут приходить с сервера)
+        const locations = [
+            { lat: 55.7558, lng: 37.6176, type: 'plastic', name: 'Фандомат Пластик', address: 'ул. Тверская, 12' },
+            { lat: 55.7517, lng: 37.6178, type: 'glass', name: 'Пункт приема Стекла', address: 'ул. Арбат, 35' },
+            { lat: 55.7580, lng: 37.6140, type: 'paper', name: 'Эко-центр Бумага', address: 'ул. Большая Дмитровка, 18' },
+            { lat: 55.7490, lng: 37.6220, type: 'metal', name: 'Металлоприемник', address: 'ул. Пушкинская, 10' },
+            { lat: 55.7620, lng: 37.6080, type: 'electronics', name: 'Центр утилизации электроники', address: 'ул. Петровка, 25' },
+            { lat: 55.7450, lng: 37.6320, type: 'plastic', name: 'Фандомат Пластик', address: 'ул. Большая Полянка, 30' },
+            { lat: 55.7680, lng: 37.6400, type: 'glass', name: 'Пункт приема Стекла', address: 'пр. Мира, 45' },
+            { lat: 55.7400, lng: 37.6050, type: 'paper', name: 'Эко-центр Бумага', address: 'ул. Большая Якиманка, 22' },
+            { lat: 55.7730, lng: 37.5950, type: 'metal', name: 'Металлоприемник', address: 'ул. 1905 года, 15' },
+            { lat: 55.7350, lng: 37.6250, type: 'electronics', name: 'Центр утилизации электроники', address: 'ул. Серпуховский Вал, 18' }
+        ];
+        
+        // Добавление маркеров на карту
+        locations.forEach(location => {
+            const marker = L.marker([location.lat, location.lng], {
+                icon: L.divIcon({
+                    className: 'custom-marker ' + location.type,
+                    html: '<i class="fas fa-trash-alt"></i>',
+                    iconSize: [30, 30],
+                    iconAnchor: [15, 30]
+                })
+            }).addTo(map);
+            
+            // Всплывающая информация при клике на маркер
+            marker.bindPopup(`
+                <div style="min-width: 200px;">
+                    <h3 style="margin: 0 0 10px; color: #2e7d32;">${location.name}</h3>
+                    <p style="margin: 0 0 10px;">${location.address}</p>
+                    <p style="margin: 0 0 10px;">Тип: ${getTypeName(location.type)}</p>
+                    <button style="background: #2e7d32; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer;">
+                        Проложить маршрут
+                    </button>
+                </div>
+            `);
+        });
+        
+        // Вспомогательная функция для получения названия типа
+        function getTypeName(type) {
+            const typeNames = {
+                'plastic': 'Пластик',
+                'glass': 'Стекло',
+                'paper': 'Бумага',
+                'metal': 'Металл',
+                'electronics': 'Электроника'
+            };
+            return typeNames[type] || type;
+        }
+        
+        // Обработчики для фильтров (заглушки)
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                console.log('Фильтр изменен: ', checkbox.id, checkbox.checked);
+                // Здесь будет логика фильтрации маркеров на карте
+            });
+        });
+    </script>
+</body>
+</html>
