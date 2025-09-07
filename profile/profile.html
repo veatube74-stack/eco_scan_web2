@@ -13,18 +13,18 @@
 
 <body>
     <header>
-        <div class="header-wapper">
-            <div class="header-flex">
-                <h1 class="logo">
-                    <img src="./images/Group 1.png" alt="">Eco Scan 
-                </h1>
-                <nav>
-                    <a href="../main/main.html">Главная</a>
-                    <a href="#about">О нас</a>
-                    <a class="nav-item contact" id="contactBtn">Связь с нами</a>
-                    <a href="#profile" id="profileLink"><button class="welcome-btn1 primary">Личный кабинет</button></a>
-                </nav>
-            </div>
+        <div class="container header-content">
+            <a href="../main/main.html"><h1 class="logo">
+                <img src="./images/Group 1.png" alt="Eco Scan">Eco Scan
+            </h1></a>
+            <nav>
+                <ul>
+                    <li><a href="../main/main.html">Главная</a></li>
+                    <li><a href="#about">О нас</a></li>
+                    <li><a href="../main/map.html">Карта</a></li>
+                    <li><a class="nav-item contact" id="contactBtn">Связь с нами</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
@@ -200,17 +200,37 @@
     
     
     <footer>
-    <div class="foot-nav">
-        <nav>
-            <a href="#welcome">Главная</a>
-            <a href="#about">О нас</a>
-            <a href="#service">Сервисы</a>
-            <a href="#contact us">Связаться с нами</a>
-        </nav>
-    </div>
-    <div>
-        <h3 class="logo">Copyright @ All right reserved</h3>
-    </div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Eco Scan</h3>
+                    <p>Инновационное решение для правильной сортировки и утилизации отходов с помощью технологии сканирования.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Навигация</h3>
+                    <ul class="footer-links">
+                        <li><a href="main.html">Главная</a></li>
+                        <li><a href="#about">О нас</a></li>
+                        <li><a href="./map.html">Карта фандоматов</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-envelope"></i> ecoscan@gmail.com</a></li>
+                        <li><a href="#"><i class="fas fa-phone"></i> +7 (777) 777-77-77</a></li>
+                        <li><a href="#"><i class="fab fa-telegram"></i> Telegram</a></li>
+                        <li><a href="#"><i class="fa-instagram"></i> instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>Copyright © 2025 Eco Scan. All rights reserved.</p>
+            </div>
+        </div>
     </footer>
 </body>
 
