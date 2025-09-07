@@ -206,14 +206,17 @@
             document.body.style.overflow = ''; // Восстанавливаем прокрутку
         }
         
-        // Назначаем обработчики событий для открытия
-        if (contactBtn) {
-            contactBtn.addEventListener('click', openModal);
-        }
-        
-        if (heroContactBtn) {
-            heroContactBtn.addEventListener('click', openModal);
-        }
+// Назначаем обработчики событий для открытия
+if (contactBtn) {
+    contactBtn.addEventListener('click', openModal);
+}
+
+// УДАЛИТЕ или ЗАКОММЕНТИРУЙТЕ этот блок, т.к. кнопки с таким id нет
+/*
+if (heroContactBtn) {
+    heroContactBtn.addEventListener('click', openModal);
+}
+*/
         
         // Назначаем обработчики событий для закрытия
         if (closeModalBtn) {
