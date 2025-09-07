@@ -342,72 +342,74 @@
         </div>
     </section>
 
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script>
-        // Инициализация карты
-        const map = L.map('map').setView([43.238949, 76.889709], 12);
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+    // Правильный центр между двумя точками
+    const centerLat = (43.2300 + 43.207500) / 2;
+    const centerLng = (76.9500 + 76.665000) / 2;
+    
+    const map = L.map('map').setView([centerLat, centerLng], 11);
+    
+    // Добавление базового слоя карты
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+    
+    // Данные фандоматов
+    const locations = [
+        { 
+            lat: 43.235441, 
+            lng: 76.909835, 
+            type: 'plastic', 
+            name: 'Фандомат Пластик', 
+            address: 'ул. Манаса 34/1',
+            description: 'Международный университет информационных технологий (МУИТ)'
+        },
         
-        // Добавление базового слоя карты
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-        
-        // Данные фандоматов
-        const locations = [
-            // Университет МУИТ
-            { 
-                lat: 43.2300, 
-                lng: 76.9500, 
-                type: 'plastic', 
-                name: 'Фандомат Пластик', 
-                address: 'ул. Манаса 34/1',
-                description: 'Международный университет информационных технологий (МУИТ)'
-            },
-            
-            // Остальные фандоматы
-            { 
-                lat: 43.2389, 
-                lng: 76.8897, type: 'plastic', 
-                name: 'Фандомат Пластик', 
-                address: 'ул. Главная, 12' 
-                description: 'ТЦ Новая'
-            },
+        { 
+            lat: 43.233585, 
+            lng: 76.907840,
+            type: 'plastic', 
+            name: 'Фандомат Пластик', 
+            address: 'ул. Мустафа Озтюрк, 5а',
+            description: 'Колледж Международной Академии Бизнеса (МАБ)'
+        },
 
-            { 
-                lat: 43.2350, 
-                lng: 76.8920, type: 'glass', 
-                name: 'Пункт приема Стекла', 
-                address: 'ул. Центральная, 35' 
-                description: 'Банк Центр Деньги'
-            },
+        { 
+            lat: 43.2350, 
+            lng: 76.8920, type: 'glass', 
+            name: 'Пункт приема Стекла', 
+            address: 'ул. Центральная, 35',
+            description: 'Банк Центр Деньги'
+        },
 
-            { 
-                lat: 43.2420, 
-                lng: 76.8850, 
-                type: 'paper', 
-                name: 'Эко-центр Бумага', 
-                address: 'ул. Зеленая, 18' 
-                description: 'Банк Money-com'
-            },
+        { 
+            lat: 43.2420, 
+            lng: 76.8850, 
+            type: 'paper', 
+            name: 'Эко-центр Бумага', 
+            address: 'ул. Зеленая, 18',
+            description: 'Банк Money-com'
+        },
 
-            { 
-                lat: 43.207500, 
-                lng: 76.665000, 
-                type: 'metal', 
-                name: 'Металлоприемник', 
-                address: 'ул. Мустафа Озтюрк, 5а' 
-                description: 'Колледж Международной Академии Бизнеса (МАБ)'
-            },
+        {  
+            lat: 43.2389, 
+            lng: 76.8897, 
+            type: 'metal', 
+            name: 'Металлоприемник', 
+            address: 'ул. Главная, 12',
+            description: 'ТЦ Новая'
+        },
 
-            { 
-                lat: 43.2450, 
-                lng: 76.8800, 
-                type: 'electronics', 
-                name: 'Центр утилизации электроники', 
-                address: 'ул. Техническая, 25' 
-                description: 'Центр Поддержки Молодежи'
-            }
-        ];
+        { 
+            lat: 43.2450, 
+            lng: 76.8800, 
+            type: 'electronics', 
+            name: 'Центр утилизации электроники', 
+            address: 'ул. Техническая, 25',
+            description: 'Центр Поддержки Молодежи'
+        }
+    ];
         
         // Добавление маркеров на карту
         locations.forEach(location => {
