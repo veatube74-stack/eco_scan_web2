@@ -97,56 +97,6 @@
         </div>
     </section>
 
-    
-        <!-- Модальное окно -->
-    <div class="modal-overlay" id="modalOverlay">
-        <div class="modal">
-            <button class="close-btn" id="closeModal">&times;</button>
-            <h2 class="modal-title">Связь с нами</h2>
-            
-            <div class="contact-info">
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <div class="contact-text">
-                        <strong>Контакты:</strong>
-                        <span>8 (777) 777-77-77</span>
-                    </div>
-                </div>
-                
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <div class="contact-text">
-                        <strong>Почта:</strong>
-                        <span>yourmail@gmail.com</span>
-                    </div>
-                </div>
-                
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <div class="contact-text">
-                        <strong>Время работы:</strong>
-                        <span>Пн-Пт: 9:00 - 18:00</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="social-links">
-                <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-            </div>
-        </div>
-    </div>
-    
-
-    
-
 
      <!-- Footer -->
     <footer>
@@ -186,65 +136,11 @@
     </footer>
 
 
-        <script>
+
+    <script>
         // Получаем элементы DOM
         const contactBtn = document.getElementById('contactBtn');
         const heroContactBtn = document.getElementById('heroContactBtn');
-        const closeModalBtn = document.getElementById('closeModal');
-        const modalOverlay = document.getElementById('modalOverlay');
-        const modal = document.querySelector('.modal');
-        
-        // Функция открытия модального окна
-        function openModal() {
-            modalOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Блокируем прокрутку фона
-        }
-        
-        // Функция закрытия модального окна
-        function closeModal() {
-            modalOverlay.classList.remove('active');
-            document.body.style.overflow = ''; // Восстанавливаем прокрутку
-        }
-        
-// Назначаем обработчики событий для открытия
-if (contactBtn) {
-    contactBtn.addEventListener('click', openModal);
-}
-
-// УДАЛИТЕ или ЗАКОММЕНТИРУЙТЕ этот блок, т.к. кнопки с таким id нет
-/*
-if (heroContactBtn) {
-    heroContactBtn.addEventListener('click', openModal);
-}
-*/
-        
-        // Назначаем обработчики событий для закрытия
-        if (closeModalBtn) {
-            closeModalBtn.addEventListener('click', closeModal);
-        }
-        
-        // Закрытие при клике вне окна
-        if (modalOverlay) {
-            modalOverlay.addEventListener('click', function(e) {
-                if (e.target === modalOverlay) {
-                    closeModal();
-                }
-            });
-        }
-        
-        // Закрытие по клавише Esc
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
-                closeModal();
-            }
-        });
-        
-        // Предотвращаем всплытие события клика внутри модального окна
-        if (modal) {
-            modal.addEventListener('click', function(e) {
-                e.stopPropagation();
-            });
-        }
 
     // Анимация счетчиков статистики
         function infiniteCounter(element, start = 0, step = 1) {
