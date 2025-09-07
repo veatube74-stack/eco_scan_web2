@@ -208,6 +208,7 @@
         .paper { background-color: #2196F3; }
         .metal { background-color: #9C27B0; }
         .electronics { background-color: #607D8B; }
+        .university { background-color: #d32f2f; } /* Красный цвет для университета */
         
         /* Адаптивность */
         @media (max-width: 900px) {
@@ -335,6 +336,10 @@
                             <div class="legend-color" style="background-color: #607D8B;"></div>
                             <span>Электроника</span>
                         </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #d32f2f;"></div>
+                            <span>Университет</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -344,25 +349,31 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
         // Инициализация карты
-        const map = L.map('map').setView([55.7558, 37.6173], 12); // Центр на Москве
+        const map = L.map('map').setView([43.238949, 76.889709], 12);
         
         // Добавление базового слоя карты
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
         
-        // Данные фандоматов (в реальном приложении будут приходить с сервера)
+        // Данные фандоматов
         const locations = [
-            { lat: 55.7558, lng: 37.6176, type: 'plastic', name: 'Фандомат Пластик', address: 'ул. Тверская, 12' },
-            { lat: 55.7517, lng: 37.6178, type: 'glass', name: 'Пункт приема Стекла', address: 'ул. Арбат, 35' },
-            { lat: 55.7580, lng: 37.6140, type: 'paper', name: 'Эко-центр Бумага', address: 'ул. Большая Дмитровка, 18' },
-            { lat: 55.7490, lng: 37.6220, type: 'metal', name: 'Металлоприемник', address: 'ул. Пушкинская, 10' },
-            { lat: 55.7620, lng: 37.6080, type: 'electronics', name: 'Центр утилизации электроники', address: 'ул. Петровка, 25' },
-            { lat: 55.7450, lng: 37.6320, type: 'plastic', name: 'Фандомат Пластик', address: 'ул. Большая Полянка, 30' },
-            { lat: 55.7680, lng: 37.6400, type: 'glass', name: 'Пункт приема Стекла', address: 'пр. Мира, 45' },
-            { lat: 55.7400, lng: 37.6050, type: 'paper', name: 'Эко-центр Бумага', address: 'ул. Большая Якиманка, 22' },
-            { lat: 55.7730, lng: 37.5950, type: 'metal', name: 'Металлоприемник', address: 'ул. 1905 года, 15' },
-            { lat: 55.7350, lng: 37.6250, type: 'electronics', name: 'Центр утилизации электроники', address: 'ул. Серпуховский Вал, 18' }
+            // Университет МУИТ
+            { 
+                lat: 43.2300, 
+                lng: 76.9500, 
+                type: 'university', 
+                name: 'Международный университет информационных технологий (МУИТ)', 
+                address: 'ул. Манаса 34/1',
+                description: 'Университет МУИТ - ведущий IT-вуз'
+            },
+            
+            // Остальные фандоматы
+            { lat: 43.2389, lng: 76.8897, type: 'plastic', name: 'Фандомат Пластик', address: 'ул. Главная, 12' },
+            { lat: 43.2350, lng: 76.8920, type: 'glass', name: 'Пункт приема Стекла', address: 'ул. Центральная, 35' },
+            { lat: 43.2420, lng: 76.8850, type: 'paper', name: 'Эко-центр Бумага', address: 'ул. Зеленая, 18' },
+            { lat: 43.2300, lng: 76.8950, type: 'metal', name: 'Металлоприемник', address: 'ул. Заводская, 10' },
+            { lat: 43.2450, lng: 76.8800, type: 'electronics', name: 'Центр утилизации электроники', address: 'ул. Техническая, 25' }
         ];
         
         // Добавление маркеров на карту
@@ -370,23 +381,37 @@
             const marker = L.marker([location.lat, location.lng], {
                 icon: L.divIcon({
                     className: 'custom-marker ' + location.type,
-                    html: '<i class="fas fa-trash-alt"></i>',
+                    html: location.type === 'university' ? 
+                          '<i class="fas fa-graduation-cap"></i>' : 
+                          '<i class="fas fa-trash-alt"></i>',
                     iconSize: [30, 30],
                     iconAnchor: [15, 30]
                 })
             }).addTo(map);
             
             // Всплывающая информация при клике на маркер
-            marker.bindPopup(`
-                <div style="min-width: 200px;">
+            let popupContent = `
+                <div style="min-width: 250px;">
                     <h3 style="margin: 0 0 10px; color: #2e7d32;">${location.name}</h3>
-                    <p style="margin: 0 0 10px;">${location.address}</p>
-                    <p style="margin: 0 0 10px;">Тип: ${getTypeName(location.type)}</p>
-                    <button style="background: #2e7d32; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer;">
-                        Проложить маршрут
-                    </button>
+                    <p style="margin: 0 0 8px;"><strong>Адрес:</strong> ${location.address}</p>
+            `;
+            
+            if (location.description) {
+                popupContent += `<p style="margin: 0 0 8px;"><strong>Описание:</strong> ${location.description}</p>`;
+            }
+            
+            if (location.type !== 'university') {
+                popupContent += `<p style="margin: 0 0 10px;"><strong>Тип отходов:</strong> ${getTypeName(location.type)}</p>`;
+            }
+            
+            popupContent += `
+                <button style="background: #2e7d32; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; width: 100%;">
+                    Проложить маршрут
+                </button>
                 </div>
-            `);
+            `;
+            
+            marker.bindPopup(popupContent);
         });
         
         // Вспомогательная функция для получения названия типа
@@ -396,12 +421,13 @@
                 'glass': 'Стекло',
                 'paper': 'Бумага',
                 'metal': 'Металл',
-                'electronics': 'Электроника'
+                'electronics': 'Электроника',
+                'university': 'Университет'
             };
             return typeNames[type] || type;
         }
         
-        // Обработчики для фильтров (заглушки)
+        // Обработчики для фильтров
         document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
             checkbox.addEventListener('change', () => {
                 console.log('Фильтр изменен: ', checkbox.id, checkbox.checked);
