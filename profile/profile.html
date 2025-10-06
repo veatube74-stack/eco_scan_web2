@@ -5,28 +5,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eco Scan</title>
+    <title>EcoScan - Профиль</title>
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="./styles/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
-    <header>
-        <div class="container header-content">
-            <a href="../main/main.html"><h1 class="logo">
-                <img src="./images/Group 1.png" alt="Eco Scan">Eco Scan
-            </h1></a>
-            <nav>
-                <ul>
-                    <li><a href="../main/main.html">Главная</a></li>
-                    <li><a href="#about">О нас</a></li>
-                    <li><a href="../main/map.html">Карта</a></li>
-                    <li><a class="nav-item contact" id="contactBtn">Связь с нами</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+<header class="header">
+  <div class="container header-content">
+    <a href="../main/main.html" class="logo">
+      <img src="../main/images/logo_yellow.png" alt="EcoScan" class="logo-img" />
+      <h1>ecoscan</h1>
+    </a>
+
+    <div class="burger" id="burger">
+      <i class="fas fa-bars"></i>
+    </div>
+
+    <nav class="nav" id="navMenu">
+      <ul>
+        <li><a href="./main.html">Главная</a></li>
+        <li><a href="#about">О нас</a></li>
+        <li><a href="./map.html">Карта</a></li>
+        <li><a href="#contact">Контакты</a></li>
+        <li><a href="./stats.html">Личная статистика</a></li>
+      </ul>
+    </nav>
+
+    <div class="profile">
+      <button class="profile-btn">
+        <img src="./images/avatar.png" alt="User Avatar" class="avatar" />
+        <span>Личный кабинет</span>
+      </button>
+    </div>
+  </div>
+</header>
 
     <!-- Основное содержимое -->
     <main class="container">
@@ -94,7 +112,7 @@
     </main>
 
         <!-- Модальное окно -->
-    <div class="modal-overlay" id="modalOverlay">
+    <!-- <div class="modal-overlay" id="modalOverlay">
         <div class="modal">
             <button class="close-btn" id="closeModal">&times;</button>
             <h2 class="modal-title">Связь с нами</h2>
@@ -137,7 +155,42 @@
                 <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
             </div>
         </div>
+    </div> -->
+
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container footer-content">
+    <div class="footer-brand">
+      <img src="../main/images/logo-white.png" alt="EcoScan logo" class="footer-logo" />
+      <h2 class="footer-title">ECO SCAN</h2>
     </div>
+
+    <div class="footer-section">
+      <h3>Навигация</h3>
+      <ul>
+        <li><a href="./main.html">Главная</a></li>
+        <li><a href="#about">О нас</a></li>
+        <li><a href="./map.html">Карта</a></li>
+        <li><a href="#contact">Связь с нами</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h3>Контакты</h3>
+      <ul>
+        <li><i class="fas fa-envelope"></i> ecoscan@gmail.com</li>
+        <li><i class="fas fa-phone"></i> +7 (777) 777-77-77</li>
+        <li><i class="fab fa-telegram"></i> ecoscan</li>
+        <li><i class="fab fa-instagram"></i> ecoscan</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>Copyright © 2025 EcoScan, TOO</p>
+  </div>
+</footer>
     
 
     <script>
@@ -196,42 +249,16 @@
                 e.stopPropagation();
             });
         }
+
+        // Бургер
+          const burger = document.getElementById('burger');
+          const navMenu = document.getElementById('navMenu');
+          
+          burger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
     </script>
     
-    
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Eco Scan</h3>
-                    <p>Инновационное решение для правильной сортировки и утилизации отходов с помощью технологии сканирования.</p>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Навигация</h3>
-                    <ul class="footer-links">
-                        <li><a href="main.html">Главная</a></li>
-                        <li><a href="#about">О нас</a></li>
-                        <li><a href="./map.html">Карта фандоматов</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Контакты</h3>
-                    <ul class="footer-links">
-                        <li><a href="#"><i class="fas fa-envelope"></i> ecoscan@gmail.com</a></li>
-                        <li><a href="#"><i class="fas fa-phone"></i> +7 (777) 777-77-77</a></li>
-                        <li><a href="#"><i class="fab fa-telegram"></i> Telegram</a></li>
-                        <li><a href="#"><i class="fa-instagram"></i> instagram</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>Copyright © 2025 Eco Scan. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
 </body>
 
 

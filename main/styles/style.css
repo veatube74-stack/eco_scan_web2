@@ -68,7 +68,7 @@ header {
 }
         
 .logo h1 {
-    color:var(--accent);
+    color: var(--accent);
     text-transform:lowercase;
     font-weight: 500;
     transition: color 0.3s;
@@ -723,6 +723,7 @@ a {
 
 .footer-section li {
   margin-bottom: 10px;
+  color: white;
 }
 
 .footer-section a {
