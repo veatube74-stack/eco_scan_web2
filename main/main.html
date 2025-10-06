@@ -16,6 +16,36 @@
 
 <body>
     <header>
+  <div class="container header-content">
+    <div class="logo">
+      <a href="./main.html">
+        <img src="./images/logo_yellow.png" alt="EcoScan">
+        <h1>EcoScan</h1>
+      </a>
+    </div>
+
+    <!-- Бургер -->
+    <div class="burger" id="burger">
+      <span></span><span></span><span></span>
+    </div>
+
+    <nav id="nav">
+      <ul>
+        <li><a href="main">Главная</a></li>
+        <li><a href="#about">О нас</a></li>
+        <li><a href="./map.html">Карта</a></li>
+        <li><a href="#contact">Связь с нами</a></li>
+      </ul>
+    </nav>
+
+    <div class="auth-buttons">
+      <button class="btn btn-in"><a href="../login panel/login.html">Вход</a></button>
+      <button class="btn btn-reg"><a href="../registration panel/register.html">Регистрация</a></button>
+    </div>
+  </div>
+</header>
+
+    <!-- <header>
         <div class="container header-content">
             <div class="logo">
                 <a href="./main.html">
@@ -23,6 +53,7 @@
                     <h1>EcoScan</h1>
                 </a>
             </div>
+
             <nav>
                 <ul>
                     <li><a href="main">Главная</a></li>
@@ -37,7 +68,7 @@
                 <button class="btn btn-reg"><a href="../registration panel/register.html">Регистрация</a></button>
             </div>
         </div>
-    </header>
+    </header> -->
 
     <!-- Hero Section -->
     <section class="hero">
@@ -54,6 +85,19 @@
     </section>
     
 
+
+    <!-- Our mission section -->
+    <section class="about" id="about">
+      <div class="about-col text">
+        <h2 class="h2-head">Наша миссия</h2>
+        <p class="body">Мы — EcoScan, команда, которая развивает сеть фандоматов (аппаратов для приёма пластика, алюминия и других отходов). Наша цель — сделать экологичный образ жизни удобным и доступным каждому, чтобы переработка отходов была простой, выгодной и привычной частью жизни каждого человека. Мы верим, что именно из маленьких действий рождаются большие перемены, и вместе мы можем сделать наш мир чище и лучше!</p>
+      </div>
+      <div class="about-col media">
+        <img src="images/photo1-section2.png" alt="About photo" class="about-image" />
+      </div>
+    </section>
+
+*
     <!-- Mission Section -->
     <section class="mission">
         <div class="container mission-content">
@@ -72,12 +116,15 @@
     <section class="stats">
         <div class="container">
             <div class="stats-header">
+                <h2 class="h2-head">Наша польза на окружающую среду</h2>
+                <p>Благодаря нашим пользователям, мы вместе делаем планету чище и зеленее каждый день</p>
                 <h2>Наша польза на окружающую среду</h2>
             </div>
             
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-icon">
+                        <i class="fas fa-trash"></i>
                         <img src="./images/svg4-section3.png" alt="">
                     </div>
                     <div class="stat-number" id="stat1">542,809</div>
@@ -86,6 +133,7 @@
                 
                 <div class="stat-card">
                     <div class="stat-icon">
+                        <i class="fas fa-recycle"></i>
                         <img src="./images/svg1-section3.png" alt="">
                     </div>
                     <div class="stat-number" id="stat2">1,240</div>
@@ -259,26 +307,37 @@
 
 
 
+
+
     <script>
         // Получаем элементы DOM
         const contactBtn = document.getElementById('contactBtn');
         const heroContactBtn = document.getElementById('heroContactBtn');
 
-    // Анимация счетчиков статистики
+        // Анимация счетчиков статистики
         function infiniteCounter(element, start = 0, step = 1) {
-        let current = start;
-        
-        setInterval(() => {
-        current += step;
-        element.textContent = current.toLocaleString();
-        }, 1000); 
-       }
+            let current = start;
+            setInterval(() => {
+                current += step;
+                element.textContent = current.toLocaleString();
+            }, 1000); 
+        }
 
         // Запуск анимации при загрузке страницы
-        infiniteCounter(document.getElementById("stat1"), 542809, 1);   // +1 в секунду
-        infiniteCounter(document.getElementById("stat2"), 1240, 2);     // +2 в секунду
-        infiniteCounter(document.getElementById("stat3"), 84356, 5);    // +5 в секунду
-        animateCounter(document.getElementById('stat4'), 2581, 2000);    
+        // infiniteCounter(document.getElementById("stat1"), 542809, 1);   // +1 в секунду
+        // infiniteCounter(document.getElementById("stat2"), 1240, 2);     // +2 в секунду
+        // infiniteCounter(document.getElementById("stat3"), 84356, 5);    // +5 в секунду
+        // animateCounter(document.getElementById('stat4'), 2581, 2000);    
+
+
+        // Burger
+        const burger = document.getElementById('burger');
+        const nav = document.getElementById('nav');
+
+        burger.addEventListener('click', () => {
+           burger.classList.toggle('active');
+           nav.classList.toggle('active');
+        });
     </script>
 
 </body>
