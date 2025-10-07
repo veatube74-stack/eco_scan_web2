@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EcoScan - Главная</title>
     <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="../profile/styles/style.css">
     <link rel="stylesheet" href="./styles/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,32 +16,34 @@
 </head>
 
 <body>
-    <header>
+<header class="header">
   <div class="container header-content">
-    <div class="logo">
-      <a href="./main.html">
-        <img src="./images/logo_yellow.png" alt="EcoScan">
-        <h1>EcoScan</h1>
-      </a>
-    </div>
+    <a href="./main-log.html" class="logo">
+      <img src="../main/images/logo_yellow.png" alt="EcoScan" class="logo-img" />
+      <h1>ecoscan</h1>
+    </a>
 
-    <!-- Бургер -->
     <div class="burger" id="burger">
-      <span></span><span></span><span></span>
+      <i class="fas fa-bars"></i>
     </div>
 
-    <nav id="nav">
+    <nav class="nav" id="navMenu">
       <ul>
-        <li><a href="./main.html">Главная</a></li>
+        <li><a href="./main-log.html">Главная</a></li>
         <li><a href="#about">О нас</a></li>
         <li><a href="./map.html">Карта</a></li>
-        <li><a href="#contact">Связь с нами</a></li>
+        <li><a href="#contact">Контакты</a></li>
+        <li><a href="#stats">Личная статистика</a></li>
       </ul>
     </nav>
 
-    <div class="auth-buttons">
-      <button class="btn btn-in"><a href="../login panel/login.html">Вход</a></button>
-      <button class="btn btn-reg"><a href="../registration panel/register.html">Регистрация</a></button>
+    <div class="profile">
+        <a href="../profile/profile.html">
+            <button class="profile-btn">
+                <img src="./images/logo-green.png" alt="User Avatar" class="avatar" />
+                <span>Личный кабинет</span>
+            </button>
+        </a>
     </div>
   </div>
 </header>
