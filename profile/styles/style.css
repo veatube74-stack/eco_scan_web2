@@ -19,7 +19,7 @@ body {
     font-family: 'Mulish', sans-serif;
     font-family: 'Open Sans', sans-serif;
     font-family: 'Roboto Condensed', sans-serif; */
-}
+
 
 .container {
     max-width: 1200px;
@@ -525,7 +525,7 @@ button {
         } */
 
 /* ===== FOOTER ===== */
-.footer {
+/* .footer {
   background: var(--brand-dark);
   color: #fff;
   padding: 60px 0 30px;
@@ -616,4 +616,137 @@ button {
   .footer-title {
     font-size: 32px;
   }
+} */
+
+/* Footer */
+.footer {
+  background: var(--brand-dark);
+  color: #ffffff;
+  padding: 60px 0 25px;
+  font-family: 'Outfit', sans-serif;
 }
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  align-items: start;
+  gap: 60px;
+  padding: 0 20px;
+}
+
+/* Brand (лого и название на одной линии) */
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.footer-logo {
+  width: 90px;
+  height: 90px;
+  flex-shrink: 0;
+}
+
+.footer-title {
+  font-size: 42px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+
+/* Sections */
+.footer-head {
+  /* font-size: 16px; */
+  /* font-weight: 500;
+  margin-bottom: 18px; */
+  opacity: 0.6;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section li {
+  margin-bottom: 10px;
+  color: white;
+}
+
+.footer-section a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  font-size: 16px;
+  transition: 0.3s ease;
+}
+
+.footer-section a:hover {
+  color: #ffffff;
+}
+
+.footer-section i {
+  margin-right: 8px;
+  width: 18px;
+  text-align: center;
+}
+
+/* Bottom */
+.footer-bottom {
+  text-align: center;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 20px;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .footer-content {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .footer-title {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .footer-brand {
+    justify-content: flex-start;
+    margin-bottom: 10px;
+  }
+
+  .footer-logo {
+    width: 70px;
+    height: 70px;
+  }
+
+  .footer-title {
+    font-size: 34px;
+  }
+
+  /* Расположение: лого и навигация в одну линию, контакты ниже */
+  .footer-section:nth-child(2) {
+    order: 2;
+  }
+
+  .footer-section:nth-child(3) {
+    order: 3;
+  }
+
+  .footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+  }
+}
+
+
