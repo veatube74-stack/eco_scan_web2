@@ -19,12 +19,44 @@
         // animateCounter(document.getElementById('stat4'), 2581, 2000);    
 
 
-        // Burger
-        const burger = document.getElementById('burger');
-        const nav = document.getElementById('nav');
+// Бургер меню
+const burgerMain = document.getElementById('burgerMain');
+const navMain = document.getElementById('navMain');
+const navOverlay = document.getElementById('navOverlay');
 
-        burger.addEventListener('click', () => {
-           burger.classList.toggle('active');
-           nav.classList.toggle('active');
-        });
+burgerMain.addEventListener('click', () => {
+  burgerMain.classList.toggle('active');
+  navMain.classList.toggle('active');
+  navOverlay.classList.toggle('active');
+  document.body.classList.toggle('menu-open');
+});
+
+// Закрытие меню при клике на оверлей
+navOverlay.addEventListener('click', () => {
+  burgerMain.classList.remove('active');
+  navMain.classList.remove('active');
+  navOverlay.classList.remove('active');
+  document.body.classList.remove('menu-open');
+});
+
+// Закрытие меню при клике на ссылку
+const navLinks = document.querySelectorAll('#navMain a');
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    burgerMain.classList.remove('active');
+    navMain.classList.remove('active');
+    navOverlay.classList.remove('active');
+    document.body.classList.remove('menu-open');
+  });
+});
+
+// Закрытие меню при нажатии Escape
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && navMain.classList.contains('active')) {
+    burgerMain.classList.remove('active');
+    navMain.classList.remove('active');
+    navOverlay.classList.remove('active');
+    document.body.classList.remove('menu-open');
+  }
+});
     
