@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EcoScan - Главная</title>
-    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/main.css">
     <link rel="stylesheet" href="../profile/styles/style.css">
     <link rel="stylesheet" href="./styles/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -26,19 +26,41 @@
     </div>
 
     <div class="burger" id="burger">
-      <i class="fas fa-bars"></i>
-    </div>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
 
-    <nav class="nav" id="navMenu">
-      <ul>
-        <li><a href="./main-log.html">Главная</a></li>
-        <li><a href="#about">О нас</a></li>
-        <li><a href="./map.html">Карта</a></li>
-        <li><a href="#contact">Контакты</a></li>
-        <li><a href="#stats">Личная статистика</a></li>
-      </ul>
-    </nav>
+<nav class="nav" id="navMenu">
+  <ul>
+    <li><a href="./main-log.html">Главная</a></li>
+    <li><a href="./about.html">О нас</a></li>
+    <li><a href="./map.html">Карта</a></li>
+    <li><a href="#contact">Контакты</a></li>
+    <li><a href="#bonus">Бонусы</a></li>
+    <li><a href="#rating">Рейтинг</a></li>
+  </ul>
+  
+  <!-- Профиль в мобильном меню как обычный пункт -->
+  <div class="mobile-profile">
+    <ul>
+      <li><a href="../profile/profile.html">Личный кабинет</a></li>
+    </ul>
+  </div>
+  
+  <!-- Соцсети в стиле econetwork.green -->
+  <div class="mobile-social">
+    <a href="#" class="social-petal-icon"><i class="fab fa-instagram"></i></a>
+    <a href="#" class="social-petal-icon"><i class="fab fa-telegram"></i></a>
+    <a href="#" class="social-petal-icon"><i class="fas fa-envelope"></i></a>
+    <a href="#" class="social-petal-icon"><i class="fas fa-phone"></i></a>
+  </div>
+</nav>
 
+<!-- Оверлей для затемнения фона -->
+<div class="nav-overlay" id="navOverlay"></div>
+
+<!-- ЛК -->
     <div class="profile">
         <a href="../profile/profile.html">
             <button class="profile-btn">
@@ -283,36 +305,7 @@
 
 
 
-    <script>
-        // Получаем элементы DOM
-        const contactBtn = document.getElementById('contactBtn');
-        const heroContactBtn = document.getElementById('heroContactBtn');
-
-        // Анимация счетчиков статистики
-        function infiniteCounter(element, start = 0, step = 1) {
-            let current = start;
-            setInterval(() => {
-                current += step;
-                element.textContent = current.toLocaleString();
-            }, 1000); 
-        }
-
-        // Запуск анимации при загрузке страницы
-        // infiniteCounter(document.getElementById("stat1"), 542809, 1);   // +1 в секунду
-        // infiniteCounter(document.getElementById("stat2"), 1240, 2);     // +2 в секунду
-        // infiniteCounter(document.getElementById("stat3"), 84356, 5);    // +5 в секунду
-        // animateCounter(document.getElementById('stat4'), 2581, 2000);    
-
-
-        // Burger
-        const burger = document.getElementById('burger');
-        const nav = document.getElementById('nav');
-
-        burger.addEventListener('click', () => {
-           burger.classList.toggle('active');
-           nav.classList.toggle('active');
-        });
-    </script>
+    <script src="../profile/script.js"></script>
 
 </body>
 

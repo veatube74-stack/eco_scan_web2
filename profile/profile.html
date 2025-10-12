@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EcoScan - Профиль</title>
-    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/profile.css">
     <link rel="stylesheet" href="../main/styles/style.css">
     <link rel="stylesheet" href="./styles/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -19,30 +19,64 @@
 <body>
 <header class="header">
   <div class="container header-content">
-    <a href="../main/main-log.html" class="logo">
-      <img src="../main/images/logo_yellow.png" alt="EcoScan" class="logo-img" />
-      <h1>ecoscan</h1>
-    </a>
-
-    <div class="burger" id="burger">
-      <i class="fas fa-bars"></i>
+    <div class="logo">
+      <a href="../main/main-log.html">
+        <img src="../main/images/logo_yellow.png" alt="EcoScan">
+        <h1>EcoScan</h1>
+      </a>
     </div>
 
-    <nav class="nav" id="navMenu">
-      <ul>
-        <li><a href="../main/main-log.html">Главная</a></li>
-        <li><a href="#about">О нас</a></li>
-        <li><a href="../main/map.html">Карта</a></li>
-        <li><a href="#contact">Контакты</a></li>
-        <li><a href="#stats">Личная статистика</a></li>
-      </ul>
-    </nav>
+<div class="burger" id="burger">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
 
+<nav class="nav" id="navMenu">
+  <ul>
+    <li><a href="../main/main-log.html">Главная</a></li>
+    <li><a href="../main/about.html">О нас</a></li>
+    <li><a href="../main/map.html">Карта</a></li>
+    <li><a href="#contact">Контакты</a></li>
+    <li><a href="#bonus">Бонусы</a></li>
+    <li><a href="#rating">Рейтинг</a></li>
+  </ul>
+  
+  <!-- Профиль в мобильном меню как обычный пункт -->
+  <div class="mobile-profile">
+    <ul>
+      <li>
+        <a href="./profile.html">
+            Личный кабинет
+          <!-- <button class="profile-btn">
+            <img src="./images/logo-green.png" alt="User Avatar" class="avatar" />
+            <span>Личный кабинет</span>
+          </button> -->
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+  <!-- Соцсети в стиле econetwork.green -->
+  <div class="mobile-social">
+    <a href="#" class="social-petal-icon"><i class="fab fa-instagram"></i></a>
+    <a href="#" class="social-petal-icon"><i class="fab fa-telegram"></i></a>
+    <a href="#" class="social-petal-icon"><i class="fas fa-envelope"></i></a>
+    <a href="#" class="social-petal-icon"><i class="fas fa-phone"></i></a>
+  </div>
+</nav>
+
+<!-- Оверлей для затемнения фона -->
+<div class="nav-overlay" id="navOverlay"></div>
+
+<!-- ЛК -->
     <div class="profile">
-      <button class="profile-btn">
-        <img src="../main/images/logo-green.png" alt="User Avatar" class="avatar" />
-        <span>Личный кабинет</span>
-      </button>
+        <a href="../profile/profile.html">
+            <button class="profile-btn">
+                <img src="./images/logo-green.png" alt="User Avatar" class="avatar" />
+                <span>Личный кабинет</span>
+            </button>
+        </a>
     </div>
   </div>
 </header>
@@ -170,9 +204,9 @@
     <div class="footer-section">
       <li class="footer-head">Навигация</li>
       <ul>
-        <li><a href="./main.html">Главная</a></li>
-        <li><a href="#about">О нас</a></li>
-        <li><a href="./map.html">Карта</a></li>
+        <li><a href="../main/main-log.html">Главная</a></li>
+        <li><a href="../main/about.html">О нас</a></li>
+        <li><a href="../main/map.html">Карта</a></li>
         <li><a href="#contact">Связь с нами</a></li>
       </ul>
     </div>
@@ -194,71 +228,7 @@
 </footer>
     
 
-    <script>
-        // Получаем элементы DOM
-        const contactBtn = document.getElementById('contactBtn');
-        const heroContactBtn = document.getElementById('heroContactBtn');
-        const closeModalBtn = document.getElementById('closeModal');
-        const modalOverlay = document.getElementById('modalOverlay');
-        const modal = document.querySelector('.modal');
-        
-        // Функция открытия модального окна
-        function openModal() {
-            modalOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Блокируем прокрутку фона
-        }
-        
-        // Функция закрытия модального окна
-        function closeModal() {
-            modalOverlay.classList.remove('active');
-            document.body.style.overflow = ''; // Восстанавливаем прокрутку
-        }
-        
-        // Назначаем обработчики событий для открытия
-        if (contactBtn) {
-            contactBtn.addEventListener('click', openModal);
-        }
-        
-        if (heroContactBtn) {
-            heroContactBtn.addEventListener('click', openModal);
-        }
-        
-        // Назначаем обработчики событий для закрытия
-        if (closeModalBtn) {
-            closeModalBtn.addEventListener('click', closeModal);
-        }
-        
-        // Закрытие при клике вне окна
-        if (modalOverlay) {
-            modalOverlay.addEventListener('click', function(e) {
-                if (e.target === modalOverlay) {
-                    closeModal();
-                }
-            });
-        }
-        
-        // Закрытие по клавише Esc
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
-                closeModal();
-            }
-        });
-        
-        // Предотвращаем всплытие события клика внутри модального окна
-        if (modal) {
-            modal.addEventListener('click', function(e) {
-                e.stopPropagation();
-            });
-        }
-
-        // Бургер
-          const burger = document.getElementById('burger');
-          const navMenu = document.getElementById('navMenu');
-          
-          burger.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
-    </script>
+    <script src="script.js"></script>
     
 </body>
 

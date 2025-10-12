@@ -160,7 +160,7 @@ a {
 }
 
 /* ==== АДАПТИВ ДЛЯ HEADER ==== */
-.burger {
+/* .burger {
   display: none;
   flex-direction: column;
   justify-content: space-between;
@@ -176,10 +176,10 @@ a {
   background: white;
   border-radius: 3px;
   transition: 0.3s;
-}
+} */
 
 /* Планшеты и телефоны */
-@media (max-width: 900px) {
+/* @media (max-width: 900px) {
   nav {
     position: absolute;
     top: 70px;
@@ -200,20 +200,20 @@ a {
   }
 
   .auth-buttons {
-    display: none; /* Скрываем кнопки на мобильной версии */
+    display: none; /* Скрываем кнопки на мобильной версии 
   }
 
   .burger {
     display: flex;
-  }
+  } */
 
   /* Когда меню активно */
-  nav.active {
+  /* nav.active {
     display: flex;
-  }
+  } */
 
   /* Анимация бургер-кнопки */
-  .burger.active span:nth-child(1) {
+  /* .burger.active span:nth-child(1) {
     transform: rotate(45deg) translateY(7px);
   }
   .burger.active span:nth-child(2) {
@@ -222,7 +222,7 @@ a {
   .burger.active span:nth-child(3) {
     transform: rotate(-45deg) translateY(-7px);
   }
-}
+} */
 
 
 
