@@ -74,28 +74,24 @@ const goToLogin = document.getElementById('goToLogin');
 // Открытие модальных окон
 loginBtn.addEventListener('click', () => {
     loginModal.style.display = 'block';
-    document.body.style.overflow = 'hidden';
 });
 
 registerBtn.addEventListener('click', () => {
     registerModal.style.display = 'block';
-    document.body.style.overflow = 'hidden';
 });
 
 mobileLoginBtn.addEventListener('click', () => {
     loginModal.style.display = 'block';
-    document.body.style.overflow = 'hidden';
     // Закрываем мобильное меню если оно открыто
-    if (navMain.classList.contains('active')) {
+    if (navMain && navMain.classList.contains('active')) {
         toggleMobileMenu();
     }
 });
 
 mobileRegisterBtn.addEventListener('click', () => {
     registerModal.style.display = 'block';
-    document.body.style.overflow = 'hidden';
     // Закрываем мобильное меню если оно открыто
-    if (navMain.classList.contains('active')) {
+    if (navMain && navMain.classList.contains('active')) {
         toggleMobileMenu();
     }
 });
@@ -105,7 +101,6 @@ closeButtons.forEach(button => {
     button.addEventListener('click', () => {
         loginModal.style.display = 'none';
         registerModal.style.display = 'none';
-        document.body.style.overflow = 'auto';
     });
 });
 
@@ -126,11 +121,9 @@ goToLogin.addEventListener('click', (e) => {
 window.addEventListener('click', (e) => {
     if (e.target === loginModal) {
         loginModal.style.display = 'none';
-        document.body.style.overflow = 'auto';
     }
     if (e.target === registerModal) {
         registerModal.style.display = 'none';
-        document.body.style.overflow = 'auto';
     }
 });
 
@@ -138,23 +131,51 @@ window.addEventListener('click', (e) => {
 document.getElementById('loginForm').addEventListener('submit', (e) => {
     e.preventDefault();
     // Здесь будет логика входа
-    alert('Форма входа отправлена!');
-    loginModal.style.display = 'none';
-    document.body.style.overflow = 'auto';
+    const username = document.getElementById('loginUsername').value;
+    const password = document.getElementById('loginPassword').value;
+    
+    // Простая валидация
+    if (username && password) {
+        alert(`Вход выполнен для пользователя: ${username}`);
+        loginModal.style.display = 'none';
+    } else {
+        alert('Пожалуйста, заполните все поля');
+    }
 });
 
 document.getElementById('registerForm').addEventListener('submit', (e) => {
     e.preventDefault();
+    const firstName = document.getElementById('registerFirstName').value;
+    const lastName = document.getElementById('registerLastName').value;
+    const email = document.getElementById('registerEmail').value;
+    const username = document.getElementById('registerUsername').value;
     const password = document.getElementById('registerPassword').value;
     const confirmPassword = document.getElementById('registerConfirmPassword').value;
+    
+    // Валидация
+    if (!firstName || !lastName || !email || !username || !password || !confirmPassword) {
+        alert('Пожалуйста, заполните все поля');
+        return;
+    }
     
     if (password !== confirmPassword) {
         alert('Пароли не совпадают!');
         return;
     }
     
+    if (password.length < 6) {
+        alert('Пароль должен содержать минимум 6 символов');
+        return;
+    }
+    
     // Здесь будет логика регистрации
-    alert('Форма регистрации отправлена!');
+    alert(`Регистрация успешна!\nДобро пожаловать, ${firstName} ${lastName}!`);
     registerModal.style.display = 'none';
-    document.body.style.overflow = 'auto';
+});
+
+// Предотвращение закрытия при клике на само модальное окно
+document.querySelectorAll('.modal-content').forEach(content => {
+    content.addEventListener('click', (e) => {
+        e.stopPropagation();
+    });
 });
