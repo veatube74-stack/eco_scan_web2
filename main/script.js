@@ -59,4 +59,102 @@ document.addEventListener('keydown', (e) => {
     document.body.classList.remove('menu-open');
   }
 });
+
+// Модальные окна
+const loginBtn = document.getElementById('loginBtn');
+const registerBtn = document.getElementById('registerBtn');
+const mobileLoginBtn = document.getElementById('mobileLoginBtn');
+const mobileRegisterBtn = document.getElementById('mobileRegisterBtn');
+const loginModal = document.getElementById('loginModal');
+const registerModal = document.getElementById('registerModal');
+const closeButtons = document.querySelectorAll('.close');
+const goToRegister = document.getElementById('goToRegister');
+const goToLogin = document.getElementById('goToLogin');
+
+// Открытие модальных окон
+loginBtn.addEventListener('click', () => {
+    loginModal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+});
+
+registerBtn.addEventListener('click', () => {
+    registerModal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+});
+
+mobileLoginBtn.addEventListener('click', () => {
+    loginModal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    // Закрываем мобильное меню если оно открыто
+    if (navMain.classList.contains('active')) {
+        toggleMobileMenu();
+    }
+});
+
+mobileRegisterBtn.addEventListener('click', () => {
+    registerModal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    // Закрываем мобильное меню если оно открыто
+    if (navMain.classList.contains('active')) {
+        toggleMobileMenu();
+    }
+});
+
+// Закрытие модальных окон
+closeButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        loginModal.style.display = 'none';
+        registerModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
+});
+
+// Переключение между модальными окнами
+goToRegister.addEventListener('click', (e) => {
+    e.preventDefault();
+    loginModal.style.display = 'none';
+    registerModal.style.display = 'block';
+});
+
+goToLogin.addEventListener('click', (e) => {
+    e.preventDefault();
+    registerModal.style.display = 'none';
+    loginModal.style.display = 'block';
+});
+
+// Закрытие при клике вне модального окна
+window.addEventListener('click', (e) => {
+    if (e.target === loginModal) {
+        loginModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+    if (e.target === registerModal) {
+        registerModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+});
+
+// Обработка форм
+document.getElementById('loginForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    // Здесь будет логика входа
+    alert('Форма входа отправлена!');
+    loginModal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+});
+
+document.getElementById('registerForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const password = document.getElementById('registerPassword').value;
+    const confirmPassword = document.getElementById('registerConfirmPassword').value;
     
+    if (password !== confirmPassword) {
+        alert('Пароли не совпадают!');
+        return;
+    }
+    
+    // Здесь будет логика регистрации
+    alert('Форма регистрации отправлена!');
+    registerModal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+});
