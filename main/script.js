@@ -179,3 +179,49 @@ document.querySelectorAll('.modal-content').forEach(content => {
         e.stopPropagation();
     });
 });
+
+// Кнопка Наверх
+const pushToTop = document.getElementById('pushToTop');
+
+// Показываем/скрываем кнопку при скролле
+window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+        pushToTop.classList.add('active');
+    } else {
+        pushToTop.classList.remove('active');
+    }
+});
+
+// Плавная прокрутка наверх при клике
+pushToTop.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+// Альтернативный вариант для старых браузеров
+function scrollToTop() {
+    const currentPosition = window.pageYOffset;
+    
+    if (currentPosition > 0) {
+        window.requestAnimationFrame(scrollToTop);
+        window.scrollTo(0, currentPosition - currentPosition / 8);
+    }
+}
+
+// Добавляем обработчик для альтернативного метода
+pushToTop.addEventListener('click', (e) => {
+    e.preventDefault();
+    
+    if ('scrollBehavior' in document.documentElement.style) {
+        // Поддержка smooth scroll
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    } else {
+        // Fallback для старых браузеров
+        scrollToTop();
+    }
+});

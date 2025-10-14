@@ -1,5 +1,6 @@
 
         
+/* Стили для кнопок авторизации */
 .auth-buttons {
     display: flex;
     gap: 15px;
@@ -12,54 +13,42 @@
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s;
-}
-
-a {
     text-decoration: none;
-    color: white;
+    display: inline-block;
+    text-align: center;
 }
-     
 
-.auth-buttons a {
+/* Убираем стандартные стили ссылок */
+.btn a {
     text-decoration: none;
+    color: inherit;
+    display: block;
 }
 
+/* Кнопка Входа - прозрачная с белыми границами */
 .btn-in {
     background: transparent;
     border: 2px solid white;
+    color: white;
 }
 
 .btn-in:hover {
     background: white;
-}
-
-.btn-in a {
-    color: white !important; 
-}
-
-.btn-in:hover a {
-    color: #2e7d32 !important;
-    /* color: #FFBA00; */
-}
-        
-.btn-reg {
-    background: var(--ligt-green);
-    border: 2px solid var(--ligt-green);
-}
-        
-.btn-reg:hover {
-    background: white;
+    color: #0C3A2D;
     border: 2px solid white;
 }
 
-.btn.btn-reg a {
-    color: white !important;
-    text-decoration: none; 
+/* Кнопка Регистрации - желтая с темно-зеленым текстом */
+.btn-reg {
+    background: #FFB902;
+    border: 2px solid #FFB902;
+    color: #0C3A2D;
 }
 
-.btn.btn-reg:hover a {
-    color: #2e7d32 !important;
-    text-decoration: none; 
+.btn-reg:hover {
+    background: transparent;
+    color: #FFB902;
+    border: 2px solid #FFB902;
 }
 
 /* ==== АДАПТИВ ДЛЯ HEADER ==== */
@@ -882,8 +871,66 @@ a {
 }
 
 
+/* Кнопка Наверх */
+.push-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: var(--brand-dark);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+    box-shadow: 0 0px 20px rgba(255, 255, 255, 0.8);
+}
 
+.push-to-top:hover {
+    background: var(--accent);
+    color: var(--brand-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
 
+.push-to-top.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.push-to-top i {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Адаптив для кнопки Наверх */
+@media (max-width: 768px) {
+    .push-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+    }
+    
+    .push-to-top i {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .push-to-top {
+        bottom: 15px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+    }
+}
 
 
 
