@@ -59,4 +59,169 @@ document.addEventListener('keydown', (e) => {
     document.body.classList.remove('menu-open');
   }
 });
+
+// Модальные окна
+const loginBtn = document.getElementById('loginBtn');
+const registerBtn = document.getElementById('registerBtn');
+const mobileLoginBtn = document.getElementById('mobileLoginBtn');
+const mobileRegisterBtn = document.getElementById('mobileRegisterBtn');
+const loginModal = document.getElementById('loginModal');
+const registerModal = document.getElementById('registerModal');
+const closeButtons = document.querySelectorAll('.close');
+const goToRegister = document.getElementById('goToRegister');
+const goToLogin = document.getElementById('goToLogin');
+
+// Открытие модальных окон
+loginBtn.addEventListener('click', () => {
+    loginModal.style.display = 'block';
+});
+
+registerBtn.addEventListener('click', () => {
+    registerModal.style.display = 'block';
+});
+
+mobileLoginBtn.addEventListener('click', () => {
+    loginModal.style.display = 'block';
+    // Закрываем мобильное меню если оно открыто
+    if (navMain && navMain.classList.contains('active')) {
+        toggleMobileMenu();
+    }
+});
+
+mobileRegisterBtn.addEventListener('click', () => {
+    registerModal.style.display = 'block';
+    // Закрываем мобильное меню если оно открыто
+    if (navMain && navMain.classList.contains('active')) {
+        toggleMobileMenu();
+    }
+});
+
+// Закрытие модальных окон
+closeButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        loginModal.style.display = 'none';
+        registerModal.style.display = 'none';
+    });
+});
+
+// Переключение между модальными окнами
+goToRegister.addEventListener('click', (e) => {
+    e.preventDefault();
+    loginModal.style.display = 'none';
+    registerModal.style.display = 'block';
+});
+
+goToLogin.addEventListener('click', (e) => {
+    e.preventDefault();
+    registerModal.style.display = 'none';
+    loginModal.style.display = 'block';
+});
+
+// Закрытие при клике вне модального окна
+window.addEventListener('click', (e) => {
+    if (e.target === loginModal) {
+        loginModal.style.display = 'none';
+    }
+    if (e.target === registerModal) {
+        registerModal.style.display = 'none';
+    }
+});
+
+// Обработка форм
+document.getElementById('loginForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    // Здесь будет логика входа
+    const username = document.getElementById('loginUsername').value;
+    const password = document.getElementById('loginPassword').value;
     
+    // Простая валидация
+    if (username && password) {
+        alert(`Вход выполнен для пользователя: ${username}`);
+        loginModal.style.display = 'none';
+    } else {
+        alert('Пожалуйста, заполните все поля');
+    }
+});
+
+document.getElementById('registerForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const firstName = document.getElementById('registerFirstName').value;
+    const lastName = document.getElementById('registerLastName').value;
+    const email = document.getElementById('registerEmail').value;
+    const username = document.getElementById('registerUsername').value;
+    const password = document.getElementById('registerPassword').value;
+    const confirmPassword = document.getElementById('registerConfirmPassword').value;
+    
+    // Валидация
+    if (!firstName || !lastName || !email || !username || !password || !confirmPassword) {
+        alert('Пожалуйста, заполните все поля');
+        return;
+    }
+    
+    if (password !== confirmPassword) {
+        alert('Пароли не совпадают!');
+        return;
+    }
+    
+    if (password.length < 6) {
+        alert('Пароль должен содержать минимум 6 символов');
+        return;
+    }
+    
+    // Здесь будет логика регистрации
+    alert(`Регистрация успешна!\nДобро пожаловать, ${firstName} ${lastName}!`);
+    registerModal.style.display = 'none';
+});
+
+// Предотвращение закрытия при клике на само модальное окно
+document.querySelectorAll('.modal-content').forEach(content => {
+    content.addEventListener('click', (e) => {
+        e.stopPropagation();
+    });
+});
+
+// Кнопка Наверх
+const pushToTop = document.getElementById('pushToTop');
+
+// Показываем/скрываем кнопку при скролле
+window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+        pushToTop.classList.add('active');
+    } else {
+        pushToTop.classList.remove('active');
+    }
+});
+
+// Плавная прокрутка наверх при клике
+pushToTop.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+// Альтернативный вариант для старых браузеров
+function scrollToTop() {
+    const currentPosition = window.pageYOffset;
+    
+    if (currentPosition > 0) {
+        window.requestAnimationFrame(scrollToTop);
+        window.scrollTo(0, currentPosition - currentPosition / 8);
+    }
+}
+
+// Добавляем обработчик для альтернативного метода
+pushToTop.addEventListener('click', (e) => {
+    e.preventDefault();
+    
+    if ('scrollBehavior' in document.documentElement.style) {
+        // Поддержка smooth scroll
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    } else {
+        // Fallback для старых браузеров
+        scrollToTop();
+    }
+});
