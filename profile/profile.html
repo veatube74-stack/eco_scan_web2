@@ -17,7 +17,7 @@
 </head>
 
 <body>
-<header class="header">
+ <header class="header">
   <div class="container header-content">
     <div class="logo">
       <a href="../main/main-log.html">
@@ -25,59 +25,88 @@
         <h1>EcoScan</h1>
       </a>
     </div>
-
-<div class="burger" id="burger">
-  <span></span>
-  <span></span>
-  <span></span>
-</div>
-
-<nav class="nav" id="navMenu">
-  <ul>
-    <li><a href="../main/main-log.html">Главная</a></li>
-    <li><a href="../main/about.html">О нас</a></li>
-    <li><a href="../main/map.html">Карта</a></li>
-    <li><a href="#contact">Контакты</a></li>
-    <li><a href="#bonus">Бонусы</a></li>
-    <li><a href="#rating">Рейтинг</a></li>
-  </ul>
+    
+    <div class="burger" id="burger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    
+    
+    <nav class="nav" id="navMenu">
+      <ul>
+        <li><a href="../main/main-log.html">Главная</a></li>
+        <li><a href="../about/about.html">О нас</a></li>
+        <li><a href="../main/map.html">Карта</a></li>
+        <li><a href="../contact/contact.html">Контакты</a></li>
+        <li><a href="../bonus/bonus.html">Бонусы</a></li>
+        <li><a href="../rating/rating.html">Рейтинг</a></li>
+      </ul>
   
-  <!-- Профиль в мобильном меню как обычный пункт -->
-  <div class="mobile-profile">
-    <ul>
-      <li>
-        <a href="./profile.html">
-            Личный кабинет
-          <!-- <button class="profile-btn">
-            <img src="./images/logo-green.png" alt="User Avatar" class="avatar" />
-            <span>Личный кабинет</span>
-          </button> -->
-        </a>
-      </li>
-    </ul>
-  </div>
-  
-  <!-- Соцсети в стиле econetwork.green -->
-  <div class="mobile-social">
-    <a href="https://www.instagram.com/ecoscan06?igsh=MXd1czRyZjR1bnc3eQ==" class="social-petal-icon"><i class="fab fa-instagram"></i></a>
-    <a href="#" class="social-petal-icon"><i class="fab fa-telegram"></i></a>
-    <a href="#" class="social-petal-icon"><i class="fas fa-envelope"></i></a>
-    <a href="#" class="social-petal-icon"><i class="fas fa-phone"></i></a>
-  </div>
-</nav>
+      <!-- Профиль в мобильном меню как обычный пункт -->
+       <div class="mobile-profile">
+        <ul>
+          <li>
+            <a href="./profile.html">
+                <i class="fas fa-user"></i>
+                &nbsp;&nbsp;Личный кабинет
+            </a>
+          </li>
+          <li>
+            <a href="../main/main.html" class="logout-mobile">
+                <i class="fas fa-sign-out-alt"></i>
+                Выйти
+            </a>
+          </li>
+          
 
-<!-- Оверлей для затемнения фона -->
-<div class="nav-overlay" id="navOverlay"></div>
-
-<!-- ЛК -->
-    <div class="profile">
-        <a href="../profile/profile.html">
-            <button class="profile-btn">
+          <!-- <li>
+            <a href="./profile.html">
+              Личный кабинет
+              <button class="profile-btn">
                 <img src="./images/logo-green.png" alt="User Avatar" class="avatar" />
                 <span>Личный кабинет</span>
-            </button>
-        </a>
-    </div>
+              </button> 
+            </a>
+          </li> -->
+        </ul>
+      </div>
+  
+      <!-- Соцсети в стиле econetwork.green -->
+       <div class="mobile-social">
+        <a href="https://www.instagram.com/ecoscan06?igsh=MXd1czRyZjR1bnc3eQ==" class="social-petal-icon"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-petal-icon"><i class="fab fa-telegram"></i></a>
+        <a href="#" class="social-petal-icon"><i class="fas fa-envelope"></i></a>
+        <a href="#" class="social-petal-icon"><i class="fas fa-phone"></i></a>
+      </div>
+    </nav>
+
+    <!-- Оверлей для затемнения фона -->
+     <div class="nav-overlay" id="navOverlay"></div>
+
+
+     <!-- ЛК с выпадающим меню -->
+      <div class="profile">
+        <div class="profile-dropdown">
+          <button class="profile-btn">
+            <img src="../images/logo-green.png" alt="User Avatar" class="avatar" />
+            <span>Личный кабинет</span>
+            <i class="fas fa-chevron-down dropdown-arrow"></i>
+          </button>
+
+          <div class="dropdown-menu">
+            <a href="./profile.html" class="dropdown-item">
+                <i class="fas fa-user"></i>
+                Личный кабинет
+            </a>
+            <a href="../main/main.html" class="dropdown-item logout">
+                <i class="fas fa-sign-out-alt"></i>
+                Выйти
+            </a>
+          </div>
+        </div>
+      </div>
+
   </div>
 </header>
 
@@ -93,7 +122,7 @@
             <div class="profile-content">
                 <div class="user-info">
                     <div class="avatar">
-                        <img src="./images/Group 1.png" alt="Аватар">
+                        <img src="../images/Group 1.png" alt="Аватар">
                     </div>
                     <div class="user-details">
                         <h3>Нуржик</h3>
@@ -197,7 +226,7 @@
 <footer class="footer">
   <div class="container footer-content">
     <div class="footer-brand">
-      <img src="../main/images/logo-white.png" alt="EcoScan logo" class="footer-logo" />
+      <img src="../images/logo-white.png" alt="EcoScan logo" class="footer-logo" />
       <h2 class="footer-title">ECO SCAN</h2>
     </div>
 
@@ -205,9 +234,9 @@
       <li class="footer-head">Навигация</li>
       <ul>
         <li><a href="../main/main-log.html">Главная</a></li>
-        <li><a href="../main/about.html">О нас</a></li>
-        <li><a href="../main/map.html">Карта</a></li>
-        <li><a href="#contact">Связь с нами</a></li>
+        <li><a href="../about/about.html">О нас</a></li>
+        <li><a href="../map/map.html">Карта</a></li>
+        <li><a href="../contact/contact.html">Связь с нами</a></li>
       </ul>
     </div>
 
@@ -228,7 +257,7 @@
 </footer>
     
 
-    <script src="../script.js"></script>
+    <script src="./script.js"></script>
     
 </body>
 

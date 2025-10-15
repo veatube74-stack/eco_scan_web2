@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoScan - Профиль</title>
+    <link rel="stylesheet" href="./styles/profile.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="./styles/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+<header class="header">
+  <div class="container header-content">
+    <div class="logo">
+      <a href="../main/main-log.html">
+        <img src="../images/logo_yellow.png" alt="EcoScan">
+        <h1>EcoScan</h1>
+      </a>
+    </div>
+
+<div class="burger" id="burger">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<nav class="nav" id="navMenu">
+  <ul>
+    <li><a href="../main/main-log.html">Главная</a></li>
+    <li><a href="../about/about.html">О нас</a></li>
+    <li><a href="../main/map.html">Карта</a></li>
+    <li><a href="../contact/contact.html">Контакты</a></li>
+    <li><a href="../bonus/bonus.html">Бонусы</a></li>
+    <li><a href="../rating/rating.html">Рейтинг</a></li>
+  </ul>
+  
+  <!-- Профиль в мобильном меню как обычный пункт -->
+  <div class="mobile-profile">
+    <ul>
+      <li>
+        <a href="./profile.html">
+            Личный кабинет
+          <!-- <button class="profile-btn">
+            <img src="./images/logo-green.png" alt="User Avatar" class="avatar" />
+            <span>Личный кабинет</span>
+          </button> -->
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+  <!-- Соцсети в стиле econetwork.green -->
+  <div class="mobile-social">
+    <a href="https://www.instagram.com/ecoscan06?igsh=MXd1czRyZjR1bnc3eQ==" class="social-petal-icon"><i class="fab fa-instagram"></i></a>
+    <a href="#" class="social-petal-icon"><i class="fab fa-telegram"></i></a>
+    <a href="#" class="social-petal-icon"><i class="fas fa-envelope"></i></a>
+    <a href="#" class="social-petal-icon"><i class="fas fa-phone"></i></a>
+  </div>
+</nav>
+
+<!-- Оверлей для затемнения фона -->
+<div class="nav-overlay" id="navOverlay"></div>
+
+<!-- ЛК -->
+    <div class="profile">
+        <a href="../profile/profile.html">
+            <button class="profile-btn">
+                <img src="../images/logo-green.png" alt="User Avatar" class="avatar" />
+                <span>Личный кабинет</span>
+            </button>
+        </a>
+    </div>
+  </div>
+</header>
+
+    <!-- Основное содержимое -->
+    <main class="container">
+        <!-- Секция личного кабинета -->
+        <section class="profile-section">
+            
+            <div class="profile-header">
+                <h2>Личный кабинет</h2>
+            </div>
+            
+            <div class="profile-content">
+                <div class="user-info">
+                    <div class="avatar">
+                        <img src="../images/Group 1.png" alt="Аватар">
+                    </div>
+                    <div class="user-details">
+                        <h3>Нуржик</h3>
+                        <p>ecoscan@gmail.com</p>
+                        <p class="member-since">Участник с 15.07.2023</p>
+                    </div>
+                </div>
+                
+                <div class="bonus-card">
+                    <h3>Ваши бонусы</h3>
+                    <div class="balance">
+                        1500 баллов
+                        <small>(1 балл = 1 тенге)</small>
+                    </div>
+                    
+                    <div class="conversion-form">
+                        <h4>Конвертация баллов</h4>
+                        <div class="input-group">
+                            <input type="number" min="1" max="1500" placeholder="Сумма">
+                            <button class="primary">Конвертировать</button>
+                        </div>
+                        
+                        <div class="payment-method">
+                            <label>Способ выплаты:</label>
+                            <select>
+                                <option value="card">Банковская карта</option>
+                                <option value="qiwi">Halyk</option>
+                            </select>
+                            <input type="text" placeholder="Номер карты/кошелька">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="transactions">
+                    <h3>История операций</h3>
+                    <div class="transaction-list">
+                        <div class="transaction-item">
+                            <div class="transaction-date">05.08.2023</div>
+                            <div class="transaction-amount">+300 баллов</div>
+                            <div class="transaction-desc">За экологичную утилизацию</div>
+                        </div>
+                        <div class="transaction-item">
+                            <div class="transaction-date">01.08.2023</div>
+                            <div class="transaction-amount negative">-200 баллов</div>
+                            <div class="transaction-desc">Конвертация в рубли</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+        <!-- Модальное окно -->
+    <!-- <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <button class="close-btn" id="closeModal">&times;</button>
+            <h2 class="modal-title">Связь с нами</h2>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="contact-text">
+                        <strong>Контакты:</strong>
+                        <span>8 (777) 777-77-77</span>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-text">
+                        <strong>Почта:</strong>
+                        <span>yourmail@gmail.com</span>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="contact-text">
+                        <strong>Время работы:</strong>
+                        <span>Пн-Пт: 9:00 - 18:00</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </div> -->
+
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container footer-content">
+    <div class="footer-brand">
+      <img src="../images/logo-white.png" alt="EcoScan logo" class="footer-logo" />
+      <h2 class="footer-title">ECO SCAN</h2>
+    </div>
+
+    <div class="footer-section">
+      <li class="footer-head">Навигация</li>
+      <ul>
+        <li><a href="../main/main-log.html">Главная</a></li>
+        <li><a href="../about/about.html">О нас</a></li>
+        <li><a href="../map/map.html">Карта</a></li>
+        <li><a href="../contact/contact.html">Связь с нами</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <li class="footer-head">Контакты</li>
+      <ul>
+        <li><a href="#"><i class="fas fa-envelope"></i> ecoscan@gmail.com</a></li>
+        <li><a href="#"><i class="fas fa-phone"></i> +7 (777) 777-77-77</a></li>
+        <li><a href="#"><i class="fab fa-telegram"></i> ecoscan</a></li>
+        <li><a href="#"><i class="fab fa-instagram"></i> ecoscan</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>Copyright © 2025 EcoScan, TOO</p>
+  </div>
+</footer>
+    
+
+    <script src="./script.js"></script>
+    
+</body>
+
+
+</html>

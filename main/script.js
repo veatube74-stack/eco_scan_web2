@@ -1,22 +1,73 @@
 
         // Получаем элементы DOM
-        const contactBtn = document.getElementById('contactBtn');
-        const heroContactBtn = document.getElementById('heroContactBtn');
+        // const contactBtn = document.getElementById('contactBtn');
+        // const heroContactBtn = document.getElementById('heroContactBtn');
 
-        // Анимация счетчиков статистики
-        function infiniteCounter(element, start = 0, step = 1) {
-            let current = start;
-            setInterval(() => {
-                current += step;
-                element.textContent = current.toLocaleString();
-            }, 1000); 
+
+
+
+
+
+// Анимация счетчиков статистики с быстрым стартом
+function animateCounter(element, finalValue, duration = 1500) { // Уменьшил до 1.5 секунд
+    let startValue = 0;
+    let startTime = null;
+    
+    function updateCounter(currentTime) {
+        if (!startTime) startTime = currentTime;
+        const elapsedTime = currentTime - startTime;
+        const progress = Math.min(elapsedTime / duration, 1);
+        
+        // Более агрессивная кривая ускорения
+        const easeOutProgress = 1 - Math.pow(1 - progress, 2); // Упростил степень
+        
+        const currentValue = Math.floor(easeOutProgress * finalValue);
+        element.textContent = currentValue.toLocaleString();
+        
+        if (progress < 1) {
+            requestAnimationFrame(updateCounter);
+        } else {
+            element.textContent = finalValue.toLocaleString();
         }
+    }
+    
+    requestAnimationFrame(updateCounter);
+}
 
-        // Запуск анимации при загрузке страницы
-        // infiniteCounter(document.getElementById("stat1"), 542809, 1);   // +1 в секунду
-        // infiniteCounter(document.getElementById("stat2"), 1240, 2);     // +2 в секунду
-        // infiniteCounter(document.getElementById("stat3"), 84356, 5);    // +5 в секунду
-        // animateCounter(document.getElementById('stat4'), 2581, 2000);    
+// Intersection Observer (запуск при прокрутке до секции)
+function initCountersOnScroll() {
+    const statsSection = document.querySelector('.stats');
+    if (!statsSection) return;
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const stat1 = document.getElementById("stat1");
+                const stat2 = document.getElementById("stat2");
+                const stat3 = document.getElementById("stat3");
+                const stat4 = document.getElementById("stat4");
+                
+                // Еще более быстрые анимации
+                if (stat1) animateCounter(stat1, 10000, 1200); // 1.2 секунды
+                if (stat2) animateCounter(stat2, 10000, 1300); // 1.3 секунды
+                if (stat3) animateCounter(stat3, 10000, 1400); // 1.4 секунды
+                if (stat4) animateCounter(stat4, 10, 800);     // 0.8 секунды
+                
+                observer.unobserve(statsSection);
+            }
+        });
+    }, { threshold: 0.3 });
+    
+    observer.observe(statsSection);
+}
+
+// Запускаем отслеживание прокрутки
+document.addEventListener('DOMContentLoaded', initCountersOnScroll);
+
+
+
+
+
 
 
 // Бургер меню
@@ -59,6 +110,11 @@ document.addEventListener('keydown', (e) => {
     document.body.classList.remove('menu-open');
   }
 });
+
+
+
+
+
 
 // Модальные окна
 const loginBtn = document.getElementById('loginBtn');
@@ -136,8 +192,14 @@ document.getElementById('loginForm').addEventListener('submit', (e) => {
     
     // Простая валидация
     if (username && password) {
-        alert(`Вход выполнен для пользователя: ${username}`);
+        // alert(`Вход выполнен для пользователя: ${username}`);
         loginModal.style.display = 'none';
+        window.location.href = '../profile/profile.html';
+
+        // Успешный вход - перенаправление на profile.html
+        // setTimeout(() => {
+        //     window.location.href = '../profile/profile.html';
+        // }, 1000); // Перенаправление через 1 секунду  
     } else {
         alert('Пожалуйста, заполните все поля');
     }
@@ -171,6 +233,7 @@ document.getElementById('registerForm').addEventListener('submit', (e) => {
     // Здесь будет логика регистрации
     alert(`Регистрация успешна!\nДобро пожаловать, ${firstName} ${lastName}!`);
     registerModal.style.display = 'none';
+    window.location.href = '../profile/profile.html';
 });
 
 // Предотвращение закрытия при клике на само модальное окно
@@ -179,6 +242,10 @@ document.querySelectorAll('.modal-content').forEach(content => {
         e.stopPropagation();
     });
 });
+
+
+
+
 
 // Кнопка Наверх
 const pushToTop = document.getElementById('pushToTop');

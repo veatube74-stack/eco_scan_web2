@@ -17,60 +17,87 @@
 </head>
 
 <body>
-<header class="header">
+ <header class="header">
   <div class="container header-content">
     <div class="logo">
-      <a href="./main-log.html">
-        <img src="./images/logo_yellow.png" alt="EcoScan">
+      <a href="../main/main-log.html">
+        <img src="../images/logo_yellow.png" alt="EcoScan">
         <h1>EcoScan</h1>
       </a>
     </div>
-
+    
     <div class="burger" id="burger">
-  <span></span>
-  <span></span>
-  <span></span>
-</div>
-
-<nav class="nav" id="navMenu">
-  <ul>
-    <li><a href="./main-log.html">Главная</a></li>
-    <li><a href="../about/about.html">О нас</a></li>
-    <li><a href="../map/map.html">Карта</a></li>
-    <li><a href="../contact/contact.html">Контакты</a></li>
-    <li><a href="../bonus/bonus.html">Бонусы</a></li>
-    <li><a href="../rating/rating.html">Рейтинг</a></li>
-  </ul>
-  
-  <!-- Профиль в мобильном меню как обычный пункт -->
-  <div class="mobile-profile">
-    <ul>
-      <li><a href="../profile/profile.html">Личный кабинет</a></li>
-    </ul>
-  </div>
-  
-  <!-- Соцсети в стиле econetwork.green -->
-  <div class="mobile-social">
-    <a href="https://www.instagram.com/ecoscan06?igsh=MXd1czRyZjR1bnc3eQ==" class="social-petal-icon"><i class="fab fa-instagram"></i></a>
-    <a href="#" class="social-petal-icon"><i class="fab fa-telegram"></i></a>
-    <a href="#" class="social-petal-icon"><i class="fas fa-envelope"></i></a>
-    <a href="#" class="social-petal-icon"><i class="fas fa-phone"></i></a>
-  </div>
-</nav>
-
-<!-- Оверлей для затемнения фона -->
-<div class="nav-overlay" id="navOverlay"></div>
-
-<!-- ЛК -->
-    <div class="profile">
-        <a href="../profile/profile.html">
-            <button class="profile-btn">
-                <img src="./images/logo-green.png" alt="User Avatar" class="avatar" />
-                <span>Личный кабинет</span>
-            </button>
-        </a>
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
+    
+    
+    <nav class="nav" id="navMenu">
+      <ul>
+        <li><a href="../main/main-log.html">Главная</a></li>
+        <li><a href="../about/about.html">О нас</a></li>
+        <li><a href="../main/map.html">Карта</a></li>
+        <li><a href="../contact/contact.html">Контакты</a></li>
+        <li><a href="../bonus/bonus.html">Бонусы</a></li>
+        <li><a href="../rating/rating.html">Рейтинг</a></li>
+      </ul>
+  
+      <!-- Профиль в мобильном меню как обычный пункт -->
+       <div class="mobile-profile">
+        <ul>
+          <li>
+            <a href="./profile.html">
+                <i class="fas fa-user"></i>
+                &nbsp;&nbsp;Личный кабинет
+            </a>
+          </li>
+          <li>
+            <a href="../main/main.html" class="logout-mobile">
+                <i class="fas fa-sign-out-alt"></i>
+                Выйти
+            </a>
+          </li>
+        </ul>
+      </div>
+  
+      <!-- Соцсети в стиле econetwork.green -->
+       <div class="mobile-social">
+        <a href="https://www.instagram.com/ecoscan06?igsh=MXd1czRyZjR1bnc3eQ==" class="social-petal-icon"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-petal-icon"><i class="fab fa-telegram"></i></a>
+        <a href="#" class="social-petal-icon"><i class="fas fa-envelope"></i></a>
+        <a href="#" class="social-petal-icon"><i class="fas fa-phone"></i></a>
+      </div>
+    </nav>
+
+    <!-- Оверлей для затемнения фона -->
+     <div class="nav-overlay" id="navOverlay"></div>
+
+
+     <!-- ЛК с выпадающим меню -->
+      <div class="profile">
+        <div class="profile-dropdown">
+          <button class="profile-btn">
+            <img src="../images/logo-green.png" alt="User Avatar" class="avatar" />
+            <span>Личный кабинет</span>
+            <i class="fas fa-chevron-down dropdown-arrow"></i>
+          </button>
+
+          <div class="dropdown-menu">
+            <a href="./profile.html" class="dropdown-item">
+                <i class="fas fa-user"></i>
+                Личный кабинет
+            </a>
+            <a href="../main/main.html" class="dropdown-item logout">
+                <i class="fas fa-sign-out-alt"></i>
+                Выйти
+            </a>
+          </div>
+        </div>
+      </div>
+
   </div>
+</header>
 </header>
 
 
@@ -97,7 +124,7 @@
         <p class="body">Мы — EcoScan, команда, которая развивает сеть фандоматов (аппаратов для приёма пластика, алюминия и других отходов). Наша цель — сделать экологичный образ жизни удобным и доступным каждому, чтобы переработка отходов была простой, выгодной и привычной частью жизни каждого человека. Мы верим, что именно из маленьких действий рождаются большие перемены, и вместе мы можем сделать наш мир чище и лучше!</p>
       </div>
       <div class="about-col media">
-        <img src="./images/photo1-section2.png" alt="About photo" class="about-image" />
+        <img src="../images/photo1-section2.png" alt="About photo" class="about-image" />
       </div>
     </section>
 
@@ -158,7 +185,7 @@
             </div>
 
   <div class="wwd-grid">
-    <img src="./images/Ellipse 1.png" alt="nature" class="ellipse" />
+    <img src="../images/Ellipse 1.png" alt="nature" class="ellipse" />
 
     <ul class="wwd-list">
       <li>
@@ -198,10 +225,10 @@
             <div class="steps-grid">
                 <div class="step-card">
                     <div class="step-number">
-                        <img src="./images/list 1.png" alt="01">
+                        <img src="../images/list 1.png" alt="01">
                     </div>
                     <div class="step-image">
-                        <img src="./images/card1-section5.png" alt="Найти фандомат">
+                        <img src="../images/card1-section5.png" alt="Найти фандомат">
                     </div>
                     <div class="step-text">
                         <p>Найти ближайший к себе фандомат</p>
@@ -211,10 +238,10 @@
                 
                 <div class="step-card">
                     <div class="step-number">
-                        <img src="./images/list 2.png" alt="02">
+                        <img src="../images/list 2.png" alt="02">
                     </div>
                     <div class="step-image">
-                        <img src="./images/card2-section5.png" alt="Сдать отходы">
+                        <img src="../images/card2-section5.png" alt="Сдать отходы">
                     </div>
                     <div class="step-text">
                         <p>Сдать ненужные вам отходы</p>
@@ -224,10 +251,10 @@
                 
                 <div class="step-card">
                     <div class="step-number">
-                        <img src="./images/list 3.png" alt="03">
+                        <img src="../images/list 3.png" alt="03">
                     </div>
                     <div class="step-image">
-                        <img src="./images/card3-section5.png" alt="Получить бонус">
+                        <img src="../images/card3-section5.png" alt="Получить бонус">
                     </div>
                     <div class="step-text">
                         <p>Получить бонус</p>
@@ -272,7 +299,7 @@
 <footer class="footer">
   <div class="container footer-content">
     <div class="footer-brand">
-      <img src="./images/logo-white.png" alt="EcoScan logo" class="footer-logo" />
+      <img src="../images/logo-white.png" alt="EcoScan logo" class="footer-logo" />
       <h2 class="footer-title">ECO SCAN</h2>
     </div>
 
@@ -306,7 +333,64 @@
 
 
 
-    <script src="../script.js"></script>
+    <script src="../profile/script.js"></script>
+    <script>
+      // Анимация счетчиков статистики с быстрым стартом
+      function animateCounter(element, finalValue, duration = 1500) { 
+        let startValue = 0;
+        let startTime = null;
+    
+        function updateCounter(currentTime) {
+          if (!startTime) startTime = currentTime;
+          const elapsedTime = currentTime - startTime;
+          const progress = Math.min(elapsedTime / duration, 1);
+        
+          // Более агрессивная кривая ускорения
+          const easeOutProgress = 1 - Math.pow(1 - progress, 2); // Упростил степень
+          const currentValue = Math.floor(easeOutProgress * finalValue);
+          element.textContent = currentValue.toLocaleString();
+        
+          if (progress < 1) {
+            requestAnimationFrame(updateCounter);
+          } else {
+            element.textContent = finalValue.toLocaleString();
+          }
+        }
+        requestAnimationFrame(updateCounter);
+      }
+
+
+      // Intersection Observer (запуск при прокрутке до секции) 
+      function initCountersOnScroll() {
+        const statsSection = document.querySelector('.stats');
+        if (!statsSection) return;
+        
+        observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const stat1 = document.getElementById("stat1");
+                const stat2 = document.getElementById("stat2");
+                const stat3 = document.getElementById("stat3");
+                const stat4 = document.getElementById("stat4");
+                
+                // Еще более быстрые анимации
+                if (stat1) animateCounter(stat1, 10000, 1200); // 1.2 секунды
+                if (stat2) animateCounter(stat2, 10000, 1300); // 1.3 секунды
+                if (stat3) animateCounter(stat3, 10000, 1400); // 1.4 секунды
+                if (stat4) animateCounter(stat4, 10, 800);     // 0.8 секунды
+                
+                observer.unobserve(statsSection);
+              }
+            });
+          }, { threshold: 0.3 });
+    
+          observer.observe(statsSection);
+        }
+
+        // Запускаем отслеживание прокрутки
+        document.addEventListener('DOMContentLoaded', initCountersOnScroll);
+
+    </script>
 
 </body>
 

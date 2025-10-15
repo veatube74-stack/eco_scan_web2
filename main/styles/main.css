@@ -40,9 +40,9 @@
 
 /* Кнопка Регистрации - желтая с темно-зеленым текстом */
 .btn-reg {
-    background: #FFB902;
-    border: 2px solid #FFB902;
-    color: #0C3A2D;
+    background: var(--ligt-green);
+    border: 2px solid var(--ligt-green);
+    color: white;
 }
 
 .btn-reg:hover {
@@ -634,6 +634,71 @@
         font-size: 1.1rem;
         color: #555;
     }
+    /* Адаптив для Stats section */
+@media (max-width: 768px) {
+    .stats {
+        padding: 60px 0;
+    }
+        
+    .stats-header {
+        margin-bottom: 30px;
+    }
+        
+    .h2-head {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+    }
+        
+    .stats-header p {
+        font-size: 1rem;
+    }
+        
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        margin-top: 30px;
+    }
+        
+    .stat-card {
+        padding: 20px 15px;
+    }
+        
+    .stat-icon {
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
+        
+    .stat-number {
+        font-size: 2rem;
+        margin-bottom: 8px;
+    }
+        
+    .stat-label {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-grid {
+        gap: 15px;
+    }
+        
+    .stat-card {
+        padding: 15px 10px;
+    }
+        
+    .stat-icon {
+        font-size: 1.8rem;
+    }
+        
+    .stat-number {
+        font-size: 1.8rem;
+    }
+        
+    .stat-label {
+        font-size: 0.85rem;
+    }
+}
        
 
 
@@ -735,31 +800,39 @@
     align-items: center;
 }
 
-/* Адаптив */
+/* Адаптив what we do*/
 @media (max-width: 768px) {
+  .ellipse {
+    display: none;
+  }
+
   .wwd-grid {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 30px;
+  }
+
+  .section-header {
+    margin-bottom: 20px;
+  }
+
+  .wwd-list {
+    margin-top: 0;
+  }
+}
+/* 
+@media (max-width: 480px) {
+  .section-header {
+    gap: 15px;
   }
 
   .ellipse {
-    margin: 0 auto;
+    display: none;
   }
 
-  .wwd-list li {
-    align-items: center;
+  .section-header h2 {
+    font-size: 1.8rem;
   }
-
-  
-    .what-we-do-content {
-        flex-direction: column;
-        gap: 40px;
-    }
-    
-    .section-header h2 {
-        font-size: 2rem;
-    }
-}
+} */
 
 
 
@@ -832,41 +905,99 @@
     line-height: 1.4;
 }
 
-/* Адаптивность для мобильных устройств */
-@media (max-width: 768px) {
+/* Адаптивность section how-it-works */
+@media (max-width: 1024px) {
     .steps-grid {
         grid-template-columns: 1fr;
-        gap: 30px;
-        max-width: 400px;
-        margin-left: auto;
-        margin-right: auto;
+        gap: 20px;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    
+    .step-card {
+        display: grid;
+        grid-template-columns: 50px 80px 1fr;
+        align-items: center;
+        gap: 15px;
+        padding: 15px;
+        min-height: auto;
+        position: relative; /* Убираем абсолютное позиционирование */
+    }
+    
+    .step-number {
+        position: static; /* Убираем абсолютное позиционирование */
+        transform: none; /* Убираем трансформацию */
+        padding: 0;
+        text-align: center;
+    }
+    
+    .step-number img {
+        width: 100%;
+        height: auto;
+        max-width: 50px;
     }
     
     .step-image {
-        height: 200px;
+        position: static; /* Убираем абсолютное позиционирование */
+        padding: 0;
+        width: 80px;
+        height: 80px;
+        margin: 0;
+    }
+    
+    .step-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
     }
     
     .step-text {
-        padding: 20px;
+        padding: 0;
+        text-align: left;
     }
     
     .step-text p {
-        font-size: 1.1rem;
+        font-size: 1rem;
+        margin: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .steps-grid {
+        gap: 15px;
+        padding: 0 15px;
+    }
+    
+    .step-card {
+        grid-template-columns: 45px 70px 1fr;
+        gap: 12px;
+        padding: 12px;
+    }
+    
+    .step-image {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .step-text p {
+        font-size: 0.9rem;
     }
 }
 
 @media (max-width: 480px) {
-    .steps-grid {
-        gap: 25px;
-    }
-    
-    .step-number img {
-        width: 50px;
-        height: 50px;
+    .step-card {
+        grid-template-columns: 40px 60px 1fr;
+        gap: 10px;
+        padding: 10px;
     }
     
     .step-image {
-        height: 180px;
+        width: 60px;
+        height: 60px;
+    }
+    
+    .step-text p {
+        font-size: 0.85rem;
     }
 }
 
