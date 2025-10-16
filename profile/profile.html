@@ -89,7 +89,7 @@
       <div class="profile">
         <div class="profile-dropdown">
           <button class="profile-btn">
-            <img src="../images/logo-green.png" alt="User Avatar" class="avatar" />
+            <img src="../images/logo-green.png" alt="User Avatar" class="avatarnav" />
             <span>Личный кабинет</span>
             <i class="fas fa-chevron-down dropdown-arrow"></i>
           </button>
@@ -110,116 +110,152 @@
   </div>
 </header>
 
-    <!-- Основное содержимое -->
-    <main class="container">
-        <!-- Секция личного кабинета -->
-        <section class="profile-section">
-            
-            <div class="profile-header">
-                <h2>Личный кабинет</h2>
-            </div>
-            
-            <div class="profile-content">
-                <div class="user-info">
-                    <div class="avatar">
-                        <img src="../images/Group 1.png" alt="Аватар">
-                    </div>
-                    <div class="user-details">
-                        <h3>Нуржик</h3>
-                        <p>ecoscan@gmail.com</p>
-                        <p class="member-since">Участник с 15.07.2023</p>
-                    </div>
-                </div>
-                
-                <div class="bonus-card">
-                    <h3>Ваши бонусы</h3>
-                    <div class="balance">
-                        1500 баллов
-                        <small>(1 балл = 1 тенге)</small>
-                    </div>
-                    
-                    <div class="conversion-form">
-                        <h4>Конвертация баллов</h4>
-                        <div class="input-group">
-                            <input type="number" min="1" max="1500" placeholder="Сумма">
-                            <button class="primary">Конвертировать</button>
-                        </div>
-                        
-                        <div class="payment-method">
-                            <label>Способ выплаты:</label>
-                            <select>
-                                <option value="card">Банковская карта</option>
-                                <option value="qiwi">Halyk</option>
-                            </select>
-                            <input type="text" placeholder="Номер карты/кошелька">
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="transactions">
-                    <h3>История операций</h3>
-                    <div class="transaction-list">
-                        <div class="transaction-item">
-                            <div class="transaction-date">05.08.2023</div>
-                            <div class="transaction-amount">+300 баллов</div>
-                            <div class="transaction-desc">За экологичную утилизацию</div>
-                        </div>
-                        <div class="transaction-item">
-                            <div class="transaction-date">01.08.2023</div>
-                            <div class="transaction-amount negative">-200 баллов</div>
-                            <div class="transaction-desc">Конвертация в рубли</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
 
-        <!-- Модальное окно -->
-    <!-- <div class="modal-overlay" id="modalOverlay">
-        <div class="modal">
-            <button class="close-btn" id="closeModal">&times;</button>
-            <h2 class="modal-title">Связь с нами</h2>
-            
-            <div class="contact-info">
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <div class="contact-text">
-                        <strong>Контакты:</strong>
-                        <span>8 (777) 777-77-77</span>
-                    </div>
-                </div>
-                
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <div class="contact-text">
-                        <strong>Почта:</strong>
-                        <span>yourmail@gmail.com</span>
-                    </div>
-                </div>
-                
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <div class="contact-text">
-                        <strong>Время работы:</strong>
-                        <span>Пн-Пт: 9:00 - 18:00</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="social-links">
-                <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-            </div>
+
+
+
+
+
+  <main class="wrap" role="main">
+    <!-- Profile Card -->
+    <section class="profile-card" aria-labelledby="profile-heading">
+      <div class="avatar-wrap">
+        <div class="avatar" id="avatarPreview" tabindex="0" aria-label="Аватар пользователя">
+          <span class="placeholder" id="avatarPlaceholder">🙂</span>
+          <img id="avatarImg" alt="Аватар" style="display:none">
+          <button class="edit-btn" id="openUpload">Загрузить</button>
+          <input type="file" id="avatarFile" accept="image/*" aria-label="Загрузить аватар">
         </div>
-    </div> -->
+        <div class="small" style="text-align:center">Ранк: <strong style="color:var(--deep-green)">Золотая лига</strong></div>
+      </div>
+
+      <div class="user-info">
+        <h1 id="profile-heading">Name</h1>
+        <div class="user-handle">@userName_name_1</div>
+        <div class="join">Присоединился(-лась) 1 марта, 2025</div>
+
+        <div class="mood-row" aria-hidden>
+              <!-- Motivation -->
+          <section class="motivation" aria-live="polite">
+            <div class="motivation-card" id="motivationWidget">
+              <div style="font-size:28px">😊</div>
+              <div>
+                <div id="motivationMessage" style="font-weight:700">Отличная работа! Ты настоящий эко-герой!</div>
+                <div class="small">Продолжай собирать — бонусы начисляются автоматически</div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+        <div class="rank">Ранк: золотая лига</div>
+        <div class="level">Уровень: <strong id="userLevel">153</strong></div>
+      </div>
+
+      <div class="actions">
+        <button class="btn-edit" id="editProfile">Редактировать</button>
+      </div>
+    </section>
+
+    <!-- Stats Row -->
+    <section class="stats-row" aria-label="Ключевые показатели">
+      <div class="stat">
+        <div class="num" id="points">543 850</div>
+        <div class="label">Бонусы</div>
+        <div class="icon"><img src="" alt="" style="display:none"></div>
+      </div>
+      <div class="stat">
+        <div class="num">3 450</div>
+        <div class="label">Друзей</div>
+      </div>
+      <div class="stat">
+        <div class="num">90 030</div>
+        <div class="label">Стрик</div>
+      </div>
+      <div class="stat">
+        <div class="num">2 581</div>
+        <div class="label">Уровень</div>
+      </div>
+    </section>
+
+    <!-- Completed this month -->
+    <h2 class="section-title">Выполнили за месяц</h2>
+    <section class="completed-grid" aria-label="Выполненные за месяц">
+      <div class="completed-item">
+        <div class="icon"><img src="images/icon-plastic.png" alt="plastic" width="62" height="62"></div>
+        <div class="value" id="cPlastic">20</div>
+        <div class="label">Plastic</div>
+      </div>
+
+      <div class="completed-item">
+        <div class="icon"><img src="images/icon-metal.png" alt="metal" width="62" height="62"></div>
+        <div class="value" id="cMetal">15</div>
+        <div class="label">Metal</div>
+      </div>
+
+      <div class="completed-item">
+        <div class="icon"><img src="images/icon-paper.png" alt="paper" width="62" height="62"></div>
+        <div class="value" id="cPaper">17</div>
+        <div class="label">Paper</div>
+      </div>
+
+      <div class="completed-item">
+        <div class="icon"><img src="images/icon-glass.png" alt="glass" width="62" height="62"></div>
+        <div class="value" id="cGlass">5</div>
+        <div class="label">Glass</div>
+      </div>
+    </section>
+
+    <!-- Tasks with progress -->
+    <h2 class="section-title" style="margin-top:34px">Таски на неделю</h2>
+    <section class="tasks">
+      <div class="task-row">
+        <div class="task-illustration"><img src="images/ill-bottle.png" alt="bottle" width="54" height="54"></div>
+        <div class="task-body">
+          <div class="task-title">пластиковые бутылки</div>
+          <div class="progress" aria-hidden><i class="fill-blue" id="mp1" style="width:50%"></i></div>
+          <div class="progress-num" id="mp1num">5/10</div>
+        </div>
+        <div style="width:36px;text-align:center"><input type="checkbox" id="w1" class="task-checkbox"></div>
+      </div>
+
+      <div class="task-row">
+        <div class="task-illustration"><img src="images/ill-can.png" alt="can" width="54" height="54"></div>
+        <div class="task-body">
+          <div class="task-title">алюминиевые банки</div>
+          <div class="progress" aria-hidden><i class="fill-dark" id="mp2" style="width:30%"></i></div>
+          <div class="progress-num" id="mp2num">3/10</div>
+        </div>
+        <div style="width:36px;text-align:center"><input type="checkbox" id="w2" class="task-checkbox"></div>
+      </div>
+
+      <div class="task-row">
+        <div class="task-illustration"><img src="images/ill-tetra.png" alt="tetra" width="54" height="54"></div>
+        <div class="task-body">
+          <div class="task-title">тетрапак</div>
+          <div class="progress" aria-hidden><i class="fill-green" id="mp3" style="width:70%"></i></div>
+          <div class="progress-num" id="mp3num">7/10</div>
+        </div>
+        <div style="width:36px;text-align:center"><input type="checkbox" id="w3" class="task-checkbox"></div>
+      </div>
+
+      <div class="task-row">
+        <div class="task-illustration"><img src="images/ill-glass.png" alt="glass" width="54" height="54"></div>
+        <div class="task-body">
+          <div class="task-title">стеклянные бутылки</div>
+          <div class="progress" aria-hidden><i class="fill-red" id="mp4" style="width:20%"></i></div>
+          <div class="progress-num" id="mp4num">3/10</div>
+        </div>
+        <div style="width:36px;text-align:center"><input type="checkbox" id="w4" class="task-checkbox"></div>
+      </div>
+    </section>
+
+  </main>
+
+
+
+
+
+
 
 
 <!-- Footer -->
@@ -258,8 +294,5 @@
     
 
     <script src="./script.js"></script>
-    
 </body>
-
-
 </html>

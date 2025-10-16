@@ -3,19 +3,6 @@
   --brand-dark:#0C3A2D;
   --accent:#FFB902;
   --ligt-green:#6D9674;
-  --primary-green:#0C3A2D;
-  --deep-green:#02547A;
-  --gold:#FFB902;
-  --bg:#F8FAF7;
-  --card:#ffffff;
-  --muted:#6D9672;
-  --stats-number:#2F7D32;
-  --streak-blue:#2175AD;
-  --streak-dark:#282435;
-  --streak-green:#26AF61;
-  --streak-red:#D72221;
-  --container:1120px;
-  --shadow:0 10px 30px rgba(12,58,45,0.08);
 }
 
 body {
@@ -70,8 +57,8 @@ body {
   align-items: center;
   gap: 10px;
   background: transparent;
-  /* border: 2px solid #fff; */
-  /* border-radius: 30px; */
+  border: 2px solid #fff;
+  border-radius: 30px;
   padding: 8px 18px;
   cursor: pointer;
   color: white;
@@ -80,16 +67,42 @@ body {
 }
 
 .profile-btn:hover {
-  background: var(--ligt-green);
-  color: var(--bg);
-  border-color: var(--ligt-green);
+  background: var(--accent);
+  color: var(--brand-dark);
+  border-color: var(--accent);
 }
 
+.avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+}
 
 /* ===== PROFILE DROPDOWN ===== */
 .profile-dropdown {
     position: relative;
     display: inline-block;
+}
+
+.profile-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+    border: 2px solid #fff;
+    border-radius: 30px;
+    padding: 8px 18px;
+    cursor: pointer;
+    color: white;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.profile-btn:hover {
+    background: var(--accent);
+    color: var(--brand-dark);
+    border-color: var(--accent);
 }
 
 .dropdown-arrow {
@@ -124,7 +137,6 @@ body {
 }
 
 .dropdown-item {
-    /* border: 2px solid #fff; */
     display: flex;
     align-items: center;
     gap: 12px;
@@ -133,16 +145,15 @@ body {
     text-decoration: none;
     transition: all 0.3s ease;
     font-size: 14px;
-    /* border: none; */
-    background: var(--ligt-green);
+    border: none;
+    background: none;
     width: 100%;
     text-align: left;
 }
 
 .dropdown-item:hover {
     /* background: #f5f5f5; */
-    background: var(--accent);
-    color: var(--bg);
+    color: var(--accent);
 }
 
 .dropdown-item i {
@@ -152,8 +163,7 @@ body {
 
 .logout {
     color: white;
-    /* border-top: 1px solid var(--brand-dark); */
-    background-color: var(--ligt-green);
+    border-top: 1px solid var(--brand-dark);
 }
 
 .logout:hover {
@@ -161,7 +171,7 @@ body {
     color: #ffffff;
 }
 
-.avatarnav {
+.avatar {
     width: 28px;
     height: 28px;
     border-radius: 50%;
@@ -441,74 +451,12 @@ body {
 
 
 
-/* Profile card */
-.wrap{max-width:var(--container);margin:28px auto;padding:0 20px}
-.profile-card{background:var(--card);border-radius:34px;padding:28px;border:1px solid rgba(12,58,45,0.08);display:grid;grid-template-columns:340px 1fr 140px;gap:28px;align-items:center;box-shadow:var(--shadow)}
-.avatar-wrap{display:flex;flex-direction:column;align-items:center;gap:12px}
-.avatar{width:260px;height:260px;border-radius:50%;background:#e3e3e3;border:6px solid rgba(12,58,45,0.06);display:grid;place-items:center;overflow:hidden;position:relative}
-.avatar img{width:100%;height:100%;object-fit:cover;display:block}
-.avatar .placeholder{font-size:64px;color:rgba(0,0,0,0.35)}
-.edit-btn{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);background:#6D9672;color:#fff;padding:8px 14px;border-radius:12px;border:none;cursor:pointer;font-weight:600}
-.avatar input[type=file]{display:none}
-.user-info h1{margin:0;font-size:48px;font-weight:800;letter-spacing:-1px}
-.user-handle{color:var(--muted);margin-top:8px}
-.join{color:var(--muted);margin-top:10px}
-.mood-row{display:flex;gap:10px;margin-top:16px}
-.rank{margin-top:12px;color:var(--deep-green);font-weight:700}
-.level{color:var(--muted);margin-top:4px}
-/* Stats row */
-.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin:40px 0}
-.stat{background:var(--card);padding:22px;border-radius:16px;text-align:center;box-shadow:0 6px 18px rgba(12,58,45,0.04);border:1px solid rgba(12,58,45,0.03)}
-.stat .num{font-size:32px;font-weight:800;color:var(--stats-number)}
-.stat .label{color:var(--muted);margin-top:8px;font-size:14px;text-transform:uppercase}
-.section-title{font-size:28px;font-weight:800;color:var(--primary-green);margin:36px 0 18px}
-.completed-grid{display:flex;gap:28px}
-.completed-item{background:var(--card);padding:18px;border-radius:100px;display:flex;flex-direction:column;align-items:center;gap:8px;width:150px;box-shadow:0 12px 30px rgba(12,58,45,0.06)}
-.completed-item .icon{width:98px;height:98px;border-radius:50%;display:grid;place-items:center;border:3px solid rgba(12,58,45,0.06)}
-.completed-item .value{font-size:36px;font-weight:800}
-.completed-item .label{color:var(--muted);text-transform:uppercase;font-weight:600}
-/* Tasks */
-.tasks{margin:36px 0;display:grid;gap:18px}
-.task-row{display:flex;gap:18px;align-items:center}
-.task-illustration{width:92px;height:92px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(180deg,#fff,#f6f6f6);border:3px solid rgba(12,58,45,0.06)}
-.task-body{flex:1}
-.task-title{font-weight:700;margin-bottom:8px}
-.progress{width:100%;height:16px;background:#f2f2f2;border-radius:12px;overflow:hidden;position:relative;border:1px solid rgba(0,0,0,0.03)}
-.progress > i{position:absolute;left:0;top:0;height:100%;display:block;border-radius:12px}
-.fill-blue{background:var(--streak-blue)}
-.fill-dark{background:var(--streak-dark)}
-.fill-green{background:var(--streak-green)}
-.fill-red{background:var(--streak-red)}
-.progress-num{font-size:13px;color:var(--muted);margin-top:6px;text-align:right}
-.motivation{margin:26px 0}
-.motivation-card{display:flex;gap:12px;align-items:center;padding:14px;border-radius:12px;background:linear-gradient(90deg,#e8f5e8,#f7fbf7);border-left:6px solid var(--streak-green)}
-.small{font-size:13px;color:rgba(255,255,255,0.8)}
-@media (max-width: 980px){
-  .profile-card{grid-template-columns:1fr;gap:18px;padding:20px}
-  .avatar{width:180px;height:180px}
-  .avatar-wrap{align-items:center}
-  .navlinks{display:none}
-  .stats-row{grid-template-columns:repeat(2,1fr)}
-  .completed-grid{flex-wrap:wrap}
-}
-@media (max-width:600px){
-  .stats-row{grid-template-columns:1fr}
-  .completed-item{width:100%}
-}
 
-
-
-
-
-
-
-
-
-/* * {
+* {
     box-sizing: border-box;
 }
 
-        /* Секция личного кабинета 
+        /* Секция личного кабинета */
         .profile-section {
             background-color: #fff;
             border-radius: 10px;
@@ -624,7 +572,7 @@ body {
         
         .back-link:hover {
             text-decoration: underline;
-        } */
+        }
 
         /* Стили модального окна */
         /* .modal-overlay {
