@@ -293,6 +293,10 @@ pushToTop.addEventListener('click', (e) => {
     }
 });
 
+
+
+
+
 // FAQ Functionality
 document.addEventListener('DOMContentLoaded', function() {
     const faqItems = document.querySelectorAll('.faq-item');
