@@ -1,0 +1,13 @@
+CREATE DATABASE ecoscan CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+USE ecoscan;
+
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  first_name VARCHAR(100),
+  last_name VARCHAR(100),
+  email VARCHAR(150) UNIQUE,
+  username VARCHAR(100) UNIQUE,
+  password VARCHAR(255),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
