@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoScan — Контакты</title>
+  <link rel="stylesheet" href="./contact.css">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../main/styles/main.css">
+  <script src="https://kit.fontawesome.com/a2b1f6d6d3.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+    <header>
+  <div class="container header-content">
+    <div class="logo">
+      <a href="../main/main.html">
+        <img src="../images/logo_yellow.png" alt="EcoScan">
+        <h1>EcoScan</h1>
+      </a>
+    </div>
+
+    <!-- Бургер -->
+    <div class="burgerMain" id="burgerMain">
+      <span></span><span></span><span></span>
+    </div>
+
+<nav id="navMain">
+  <ul>
+    <li><a href="../main/main.html">Главная</a></li>
+    <li><a href="../about/about.html">О нас</a></li>
+    <li><a href="../map/map.html">Карта</a></li>
+    <li><a href="../contact/contact.html">Связь с нами</a></li>
+  </ul>
+  
+  <!-- Кнопки в мобильном меню -->
+<div class="mobile-auth-buttons">
+  <button class="mobile-btn mobile-btn-in" id="mobileLoginBtn">Войти</button>
+  <button class="mobile-btn mobile-btn-reg" id="mobileRegisterBtn">Регистрация</button>
+</div>
+  
+  <!-- Соцсети в стиле econetwork.green -->
+  <div class="mobile-social">
+    <a href="https://www.instagram.com/ecoscan06?igsh=MXd1czRyZjR1bnc3eQ==" class="social-petal-icon"><i class="fab fa-instagram"></i></a>
+    <a href="#" class="social-petal-icon"><i class="fab fa-telegram"></i></a>
+    <a href="#" class="social-petal-icon"><i class="fas fa-envelope"></i></a>
+    <a href="#" class="social-petal-icon"><i class="fas fa-phone"></i></a>
+  </div>
+</nav>
+
+<!-- Оверлей для затемнения фона -->
+<div class="nav-overlay" id="navOverlay"></div>
+
+    <div class="auth-buttons">
+      <button class="btn btn-in" id="loginBtn">Вход</button>
+      <button class="btn btn-reg" id="registerBtn">Регистрация</button>
+    </div>
+  </div>
+</header>
+
+    <!-- Модальное окно входа -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Вход в аккаунт</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginUsername">Логин</label>
+                    <input type="text" id="loginUsername" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Пароль</label>
+                    <input type="password" id="loginPassword" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Войти</button>
+            </form>
+            <div class="modal-footer">
+                <p>Нет аккаунта? <a href="#" id="goToRegister">Зарегистрироваться</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно регистрации -->
+    <div class="modal" id="registerModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Регистрация</h2>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="registerFirstName">Имя</label>
+                    <input type="text" id="registerFirstName" name="firstName" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerLastName">Фамилия</label>
+                    <input type="text" id="registerLastName" name="lastName" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">Email</label>
+                    <input type="email" id="registerEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerUsername">Логин</label>
+                    <input type="text" id="registerUsername" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Пароль</label>
+                    <input type="password" id="registerPassword" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerConfirmPassword">Подтвердите пароль</label>
+                    <input type="password" id="registerConfirmPassword" name="confirmPassword" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Зарегистрироваться</button>
+            </form>
+            <div class="modal-footer">
+                <p>Уже есть аккаунт? <a href="#" id="goToLogin">Войти</a></p>
+            </div>
+        </div>
+    </div>
+
+    
+  <!-- ===== CONTACT FORM SECTION ===== -->
+  <main class="contact-container">
+    <h2 class="contact-title">Заявка на установку фандомата</h2>
+    <p class="contact-subtitle">Если вы хотите установить фандомат EcoScan у себя — заполните форму ниже, и мы свяжемся с вами!</p>
+
+    <form id="contactForm" class="contact-form">
+      <div class="form-row">
+        <div class="form-col">
+          <label for="companyName">Название компании</label>
+          <input type="text" id="companyName" name="companyName" required>
+        </div>
+
+        <div class="form-col">
+          <label for="fullName">ФИО представителя</label>
+          <input type="text" id="fullName" name="fullName" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-col">
+          <label for="email">Электронная почта</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-col">
+          <label for="phone">Номер телефона</label>
+          <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-col full">
+          <label for="address">Адрес установки фандомата</label>
+          <input type="text" id="address" name="address" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-col full">
+          <label for="comment">Дополнительная информация</label>
+          <textarea id="comment" name="comment" rows="4" placeholder="Например: количество желаемых фандоматов, условия размещения и т.д."></textarea>
+        </div>
+      </div>
+
+      <button type="submit" class="btn-submit">Отправить заявку</button>
+    </form>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <img src="../images/logo-white.png" alt="EcoScan logo" class="footer-logo" />
+        <h2 class="footer-title">ECO SCAN</h2>
+      </div>
+      <div class="footer-section">
+        <li class="footer-head">Навигация</li>
+        <ul>
+          <li><a href="../main/main.html">Главная</a></li>
+          <li><a href="../about/about.html">О нас</a></li>
+          <li><a href="../map/map.html">Карта</a></li>
+          <li><a href=".contact.html">Связь с нами</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <li class="footer-head">Контакты</li>
+        <ul>
+          <li><a href="#"><i class="fas fa-envelope"></i> ecoscan@gmail.com</a></li>
+          <li><a href="#"><i class="fas fa-phone"></i> +7 (777) 777-77-77</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Copyright © 2025 EcoScan, TOO</p>
+    </div>
+  </footer>
+
+  <script src="./contact.js"></script>
+  <script src="../main/script.js"></script>
+</body>
+</html>

@@ -13,8 +13,8 @@
 
 </head>
 <body>
-    <!-- Header -->
-    <header>
+    <!-- Header -->    
+     <header>
   <div class="container header-content">
     <div class="logo">
       <a href="../main/main.html">
@@ -32,14 +32,14 @@
   <ul>
     <li><a href="../main/main.html">Главная</a></li>
     <li><a href="../about/about.html">О нас</a></li>
-    <li><a href="../map/map.html">Карта</a></li>
+    <li><a href="./map.html">Карта</a></li>
     <li><a href="../contact/contact.html">Связь с нами</a></li>
   </ul>
   
   <!-- Кнопки в мобильном меню -->
 <div class="mobile-auth-buttons">
-  <a href="../login panel/login.html" class="mobile-btn mobile-btn-in">Войти</a>
-  <a href="../registration panel/register.html" class="mobile-btn mobile-btn-reg">Регистрация</a>
+  <button class="mobile-btn mobile-btn-in" id="mobileLoginBtn">Войти</button>
+  <button class="mobile-btn mobile-btn-reg" id="mobileRegisterBtn">Регистрация</button>
 </div>
   
   <!-- Соцсети в стиле econetwork.green -->
@@ -55,11 +55,71 @@
 <div class="nav-overlay" id="navOverlay"></div>
 
     <div class="auth-buttons">
-      <button class="btn btn-in"><a href="../login panel/login.html">Вход</a></button>
-      <button class="btn btn-reg"><a href="../registration panel/register.html">Регистрация</a></button>
+      <button class="btn btn-in" id="loginBtn">Вход</button>
+      <button class="btn btn-reg" id="registerBtn">Регистрация</button>
     </div>
   </div>
 </header>
+
+    <!-- Модальное окно входа -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Вход в аккаунт</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginUsername">Логин</label>
+                    <input type="text" id="loginUsername" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Пароль</label>
+                    <input type="password" id="loginPassword" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Войти</button>
+            </form>
+            <div class="modal-footer">
+                <p>Нет аккаунта? <a href="#" id="goToRegister">Зарегистрироваться</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно регистрации -->
+    <div class="modal" id="registerModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Регистрация</h2>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="registerFirstName">Имя</label>
+                    <input type="text" id="registerFirstName" name="firstName" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerLastName">Фамилия</label>
+                    <input type="text" id="registerLastName" name="lastName" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">Email</label>
+                    <input type="email" id="registerEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerUsername">Логин</label>
+                    <input type="text" id="registerUsername" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Пароль</label>
+                    <input type="password" id="registerPassword" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerConfirmPassword">Подтвердите пароль</label>
+                    <input type="password" id="registerConfirmPassword" name="confirmPassword" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Зарегистрироваться</button>
+            </form>
+            <div class="modal-footer">
+                <p>Уже есть аккаунт? <a href="#" id="goToLogin">Войти</a></p>
+            </div>
+        </div>
+    </div>
 
     <!-- Карта -->
     <section class="map-section">
@@ -186,9 +246,9 @@
     <div class="footer-section">
       <li class="footer-head">Навигация</li>
       <ul>
-        <li><a href="./main.html">Главная</a></li>
+        <li><a href="../main/main.html">Главная</a></li>
         <li><a href="../about/about.html">О нас</a></li>
-        <li><a href="../map/map.html">Карта</a></li>
+        <li><a href="./map.html">Карта</a></li>
         <li><a href="../contact/contact.html">Связь с нами</a></li>
       </ul>
     </div>
