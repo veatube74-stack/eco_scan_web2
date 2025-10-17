@@ -42,165 +42,120 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ======= AVATAR UPLOAD (localStorage) ======= */
-  const avatarFile = document.getElementById('avatarFile');
-  const avatarPreview = document.getElementById('avatarPreview');
+
+
+
+
+
+
+
+
+  /* ======= PROFILE DATA ======= */
   const avatarImg = document.getElementById('avatarImg');
   const avatarPlaceholder = document.getElementById('avatarPlaceholder');
-  const openUpload = document.getElementById('openUpload');
+  const DEFAULT_AVATAR = '../images/logo-green.png';
+  const STORAGE_KEYS = {
+    avatar: 'ecoscan_avatar',
+    user: 'ecoscan_user',
+    tasks: 'ecoscan_tasks'
+  };
 
-  function setAvatarFromDataURL(dataUrl) {
-    if (!avatarImg || !avatarPreview || !avatarPlaceholder) return;
+  function setAvatar(dataUrl) {
+    if (!avatarImg || !avatarPlaceholder) return;
     if (!dataUrl) {
       avatarImg.style.display = 'none';
       avatarPlaceholder.style.display = 'block';
-      avatarImg.src = '';
-      return;
+      avatarPlaceholder.querySelector('img').src = DEFAULT_AVATAR;
+    } else {
+      avatarImg.src = dataUrl;
+      avatarImg.style.display = 'block';
+      avatarPlaceholder.style.display = 'none';
     }
-    avatarImg.src = dataUrl;
-    avatarImg.style.display = 'block';
-    avatarPlaceholder.style.display = 'none';
-    avatarPreview.style.background = 'transparent';
   }
 
-  // load saved avatar
+  function loadUser() {
+    let user = { firstName: '', lastName: '', email: '', level: 153, points: 543850, streak: 90 };
+    try {
+      const raw = localStorage.getItem(STORAGE_KEYS.user);
+      if (raw) user = Object.assign(user, JSON.parse(raw));
+    } catch (e) {}
+
+    document.getElementById('userLevel').textContent = user.level;
+    document.getElementById('streakNum').textContent = user.streak;
+    document.getElementById('profile-heading').textContent =
+      user.firstName ? `${user.firstName} ${user.lastName || ''}` : 'Name';
+    document.getElementById('userHandle').textContent =
+      user.email ? '@' + user.email.split('@')[0] : '@userName_name_1';
+  }
+
   try {
-    if (localStorage) {
-      const saved = localStorage.getItem('ecoscan_avatar');
-      if (saved) setAvatarFromDataURL(saved);
-    }
+    const saved = localStorage.getItem(STORAGE_KEYS.avatar);
+    setAvatar(saved || null);
   } catch (e) {
-    console.warn('localStorage not available', e);
+    setAvatar(null);
   }
 
-  // Open file dialog
-  if (openUpload && avatarFile) {
-    openUpload.addEventListener('click', (ev) => {
-      ev.stopPropagation();
-      avatarFile.click();
-    });
-  }
-  if (avatarPreview && avatarFile) {
-    avatarPreview.addEventListener('click', () => avatarFile.click());
-  }
+  loadUser();
 
-  if (avatarFile) {
-    avatarFile.addEventListener('change', (e) => {
-      const file = e.target.files && e.target.files[0];
-      if (!file) return;
-      if (!file.type || !file.type.startsWith('image/')) {
-        alert('Пожалуйста, выберите изображение.');
-        return;
-      }
-      // Ограничение размера (2.2 MB)
-      const maxBytes = 2.2 * 1024 * 1024;
-      if (file.size > maxBytes) {
-        alert('Файл слишком большой. Максимум 2 МБ.');
-        return;
-      }
-
-      const reader = new FileReader();
-      reader.onload = function (ev) {
-        const dataUrl = ev.target.result;
-        setAvatarFromDataURL(dataUrl);
-        try {
-          localStorage.setItem('ecoscan_avatar', dataUrl);
-        } catch (err) {
-          console.warn('could not save avatar to localStorage', err);
-        }
-      };
-      reader.readAsDataURL(file);
+  /* ======= LOGOUT ======= */
+  const logoutBtn2 = document.getElementById('logoutBtn2');
+  if (logoutBtn2) {
+    logoutBtn2.addEventListener('click', () => {
+      localStorage.removeItem(STORAGE_KEYS.avatar);
+      localStorage.removeItem(STORAGE_KEYS.user);
+      localStorage.removeItem(STORAGE_KEYS.tasks);
+      window.location.href = '../main/main.html';
     });
   }
 
-  // Accessibility: Enter/Space opens uploader when avatar is focused
-  if (avatarPreview && avatarFile) {
-    avatarPreview.addEventListener('keydown', (ev) => {
-      if (ev.key === 'Enter' || ev.key === ' ') {
-        ev.preventDefault();
-        avatarFile.click();
-      }
+  /* ======= EDIT PROFILE ======= */
+  const editProfile = document.getElementById('editProfile');
+  if (editProfile) editProfile.addEventListener('click', () => location.href = 'user-settings.html');
+});
+
+
+  // TASKS logic: reporting action increases counters, progress based on streak
+  const TASKS_DEFAULT = { plastic: { done:0, goal:10 }, metal:{done:0,goal:10}, tetra:{done:0,goal:10}, glass:{done:0,goal:10} };
+  function loadTasks(){
+    let tasks = TASKS_DEFAULT;
+    try{ const raw = localStorage.getItem(STORAGE_KEYS.tasks); if(raw) tasks = JSON.parse(raw); }catch(e){}
+    return tasks;
+  }
+  function saveTasks(tasks){ try{ localStorage.setItem(STORAGE_KEYS.tasks, JSON.stringify(tasks)); }catch(e){} }
+
+  function updateTaskUI(tasks){
+    const map = { plastic: 'mp1', metal: 'mp2', tetra: 'mp3', glass: 'mp4' };
+    const valMap = { plastic: 'cPlastic', metal:'cMetal', tetra:'cPaper', glass:'cGlass' };
+    for(const key in map){
+      const el = document.getElementById(map[key]);
+      const num = document.getElementById(map[key]+'num');
+      const valEl = document.getElementById(valMap[key]);
+      const done = tasks[key].done || 0;
+      const goal = tasks[key].goal || 10;
+      const pct = Math.min(Math.round((done/goal)*100),100);
+      if(el) el.style.width = pct + '%';
+      if(document.getElementById(map[key]+'num')) document.getElementById(map[key]+'num').textContent = done + '/' + goal;
+      if(valEl) valEl.textContent = done;
+    }
+  }
+
+  document.querySelectorAll('.btn-action').forEach(btn=>{
+    btn.addEventListener('click', (e)=>{
+      const task = e.currentTarget.getAttribute('data-task');
+      if(!task) return;
+      const tasks = loadTasks();
+      tasks[task].done = (tasks[task].done || 0) + 1;
+      let user = { points:543850, streak:90 };
+      try{ const raw = localStorage.getItem(STORAGE_KEYS.user); if(raw) user = Object.assign(user, JSON.parse(raw)); }catch(e){}
+      user.streak = (user.streak || 0) + 1;
+      user.points = (user.points || 0) + 10;
+      try{ localStorage.setItem(STORAGE_KEYS.user, JSON.stringify(user)); }catch(e){}
+      saveTasks(tasks);
+      updateTaskUI(tasks);
+      loadUser();
     });
-  }
-
-  /* ======= TASKS AND PROGRESS ======= */
-  function calculateActivityLevel(completed, total) {
-    const rate = total === 0 ? 0 : (completed / total);
-    if (rate >= 0.75) return { level: 'excellent', emoji: '😊', msg: 'Отличная работа! Ты настоящий эко-герой!', color: '#26AF61' };
-    if (rate >= 0.5) return { level: 'good', emoji: '🙂', msg: 'Хорошая работа! Продолжай в том же духе!', color: '#FFA000' };
-    return { level: 'poor', emoji: '😔', msg: 'Давай в следующей неделе постараемся больше!', color: '#D72221' };
-  }
-
-  function updateMotivation() {
-    const checked = document.querySelectorAll('.task-checkbox:checked').length;
-    const total = document.querySelectorAll('.task-checkbox').length;
-    const data = calculateActivityLevel(checked, total);
-    const widget = document.getElementById('motivationWidget');
-    if (!widget) return;
-    widget.innerHTML = `
-      <div class="motivation-card" style="border-left:6px solid ${data.color};">
-        <div style="font-size:28px">${data.emoji}</div>
-        <div>
-          <div id="motivationMessage" style="font-weight:700">${data.msg}</div>
-          <div class="small">Выполнено: ${checked}/${total} задач</div>
-        </div>
-      </div>`;
-  }
-
-  function updateProgressAndPoints() {
-    const checkboxes = Array.from(document.querySelectorAll('.task-checkbox'));
-    const completed = checkboxes.filter(cb => cb.checked).length;
-    const base = 543850;
-    const mapping = { w1: 50, w2: 30, w3: 80, w4: 40 };
-    const sum = checkboxes.reduce((acc, cb) => acc + (cb.checked ? (mapping[cb.id] || 0) : 0), 0);
-    const pointsEl = document.getElementById('points');
-    if (pointsEl) pointsEl.textContent = (base + sum).toLocaleString('ru-RU');
-
-    const mp1 = document.getElementById('mp1'), mp1num = document.getElementById('mp1num');
-    const mp2 = document.getElementById('mp2'), mp2num = document.getElementById('mp2num');
-    const mp3 = document.getElementById('mp3'), mp3num = document.getElementById('mp3num');
-    const mp4 = document.getElementById('mp4'), mp4num = document.getElementById('mp4num');
-
-    const baseValues = { mp1: 50, mp2: 30, mp3: 70, mp4: 20 };
-    const bonus = completed * 6;
-    if (mp1) mp1.style.width = Math.min(baseValues.mp1 + bonus, 100) + '%';
-    if (mp2) mp2.style.width = Math.min(baseValues.mp2 + Math.floor(bonus / 2), 100) + '%';
-    if (mp3) mp3.style.width = Math.min(baseValues.mp3 + Math.floor(bonus / 3), 100) + '%';
-    if (mp4) mp4.style.width = Math.min(baseValues.mp4 + Math.floor(bonus / 4), 100) + '%';
-
-    if (mp1num && mp1 && mp1.style.width) mp1num.textContent = Math.round((parseFloat(mp1.style.width) / 100) * 10) + '/10';
-    if (mp2num && mp2 && mp2.style.width) mp2num.textContent = Math.round((parseFloat(mp2.style.width) / 100) * 10) + '/10';
-    if (mp3num && mp3 && mp3.style.width) mp3num.textContent = Math.round((parseFloat(mp3.style.width) / 100) * 10) + '/10';
-    if (mp4num && mp4 && mp4.style.width) mp4num.textContent = Math.round((parseFloat(mp4.style.width) / 100) * 10) + '/10';
-  }
-
-  function saveTasks() {
-    const state = {};
-    document.querySelectorAll('.task-checkbox').forEach(cb => state[cb.id] = cb.checked);
-    try { localStorage.setItem('ecoscan_tasks', JSON.stringify(state)); } catch (e) { console.warn('no localStorage', e); }
-  }
-
-  function onTaskChange() {
-    updateMotivation();
-    updateProgressAndPoints();
-    saveTasks();
-  }
-
-  // attach change handlers to checkboxes
-  document.querySelectorAll('.task-checkbox').forEach(cb => {
-    cb.addEventListener('change', onTaskChange);
   });
 
-  // load saved tasks state
-  try {
-    const saved = JSON.parse(localStorage.getItem('ecoscan_tasks') || '{}');
-    document.querySelectorAll('.task-checkbox').forEach(cb => {
-      if (saved[cb.id] !== undefined) cb.checked = saved[cb.id];
-    });
-  } catch (e) { /* ignore */ }
-
-  // initial render
-  updateMotivation();
-  updateProgressAndPoints();
-
-}); // end DOMContentLoaded
+  function loadUser(){ try{ const raw = localStorage.getItem(STORAGE_KEYS.user); if(raw){ const u = JSON.parse(raw); document.getElementById('userLevel').textContent = u.level || 153; document.getElementById('points').textContent = (u.points||0).toLocaleString('ru-RU'); document.getElementById('streakNum').textContent = u.streak||0; document.getElementById('profile-heading').textContent = (u.firstName? u.firstName + ' ' + (u.lastName||'') : 'Name'); document.getElementById('userHandle').textContent = u.email ? '@'+u.email.split('@')[0] : '@userName_name_1'; } }catch(e){ } }
+  loadUser();
+  updateTaskUI(loadTasks());

@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang='ru'>
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width,initial-scale=1'>
+  <title>EcoScan — Настройки</title>
+    <link rel="stylesheet" href="./styles/profile.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="./styles/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+ <header class="header">
+  <div class="container header-content">
+    <div class="logo">
+      <a href="../main/main-log.html">
+        <img src="../images/logo_yellow.png" alt="EcoScan">
+        <h1>EcoScan</h1>
+      </a>
+    </div>
+    
+    <div class="burger" id="burger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    
+    
+    <nav class="nav" id="navMenu">
+      <ul>
+        <li><a href="../main/main-log.html">Главная</a></li>
+        <li><a href="../about/about.html">О нас</a></li>
+        <li><a href="../main/map.html">Карта</a></li>
+        <li><a href="../contact/contact.html">Контакты</a></li>
+        <li><a href="../bonus/bonus.html">Бонусы</a></li>
+        <li><a href="../rating/rating.html">Рейтинг</a></li>
+      </ul>
+  
+      <!-- Профиль в мобильном меню как обычный пункт -->
+       <div class="mobile-profile">
+        <ul>
+          <li>
+            <a href="./profile.html">
+                <i class="fas fa-user"></i>
+                &nbsp;&nbsp;Личный кабинет
+            </a>
+          </li>
+          <li>
+            <a href="../main/main.html" class="logout-mobile">
+                <i class="fas fa-sign-out-alt"></i>
+                Выйти
+            </a>
+          </li>
+        </ul>
+      </div>
+  
+      <!-- Соцсети в стиле econetwork.green -->
+       <div class="mobile-social">
+        <a href="https://www.instagram.com/ecoscan06?igsh=MXd1czRyZjR1bnc3eQ==" class="social-petal-icon"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-petal-icon"><i class="fab fa-telegram"></i></a>
+        <a href="#" class="social-petal-icon"><i class="fas fa-envelope"></i></a>
+        <a href="#" class="social-petal-icon"><i class="fas fa-phone"></i></a>
+      </div>
+    </nav>
+
+    <!-- Оверлей для затемнения фона -->
+     <div class="nav-overlay" id="navOverlay"></div>
+
+
+     <!-- ЛК с выпадающим меню -->
+      <div class="profile">
+        <div class="profile-dropdown">
+          <button class="profile-btn">
+            <img src="../images/logo-green.png" alt="User Avatar" class="avatarnav" />
+            <span>Личный кабинет</span>
+            <i class="fas fa-chevron-down dropdown-arrow"></i>
+          </button>
+
+          <div class="dropdown-menu">
+            <a href="./profile.html" class="dropdown-item">
+                <i class="fas fa-user"></i>
+                Личный кабинет
+            </a>
+            <a href="../main/main.html" class="dropdown-item logout">
+                <i class="fas fa-sign-out-alt"></i>
+                Выйти
+            </a>
+          </div>
+        </div>
+      </div>
+
+  </div>
+</header>
+
+
+
+
+
+  <main class="wrap settings-wrap">
+    <section class="settings-card">
+      <h2>Настройки профиля</h2>
+      <form id="settingsForm" class="settings-form">
+                <div class="row avatar-row">
+          <div class="col">
+            <label>Аватар</label>
+            <div class="avatar-edit">
+              <div class="avatar" id="avatarPreviewSettings"><img id="avatarImgSettings" style="display:none">
+                <span id="avatarPlaceholder">
+                  <img src="../images/logo-green.png">
+                </span>
+              </div>
+              <input type="file" id="avatarFileSettings" accept="image/*" style="display:none">
+              <button type="button" id="openUploadSettings" class="btn-profile-user">Загрузить аватар</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <label>Имя</label>
+            <input type="text" id="firstName" placeholder="Имя">
+          </div>
+          <div class="col">
+            <label>Фамилия</label>
+            <input type="text" id="lastName" placeholder="Фамилия">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label>Email</label>
+            <input type="email" id="email" placeholder="email@example.com">
+          </div>
+          <div class="col">
+            <label>Пароль</label>
+            <input type="password" id="password" placeholder="Новый пароль">
+          </div>
+        </div>
+
+        
+          <div class="col">
+            <label>&nbsp;</label>
+            <div class="actions-settings">
+              <button type="submit" class="btn-profile-user">Сохранить изменения</button>
+              <a href="./profile.html" class="btn-no">Отмена</a>
+            </div>
+          </div>
+      </form>
+    </section>
+  </main>
+
+  <!-- Footer -->
+<footer class="footer">
+  <div class="container footer-content">
+    <div class="footer-brand">
+      <img src="../images/logo-white.png" alt="EcoScan logo" class="footer-logo" />
+      <h2 class="footer-title">ECO SCAN</h2>
+    </div>
+
+    <div class="footer-section">
+      <li class="footer-head">Навигация</li>
+      <ul>
+        <li><a href="../main/main-log.html">Главная</a></li>
+        <li><a href="../about/about.html">О нас</a></li>
+        <li><a href="../map/map.html">Карта</a></li>
+        <li><a href="../contact/contact.html">Связь с нами</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <li class="footer-head">Контакты</li>
+      <ul>
+        <li><a href="#"><i class="fas fa-envelope"></i> ecoscan@gmail.com</a></li>
+        <li><a href="#"><i class="fas fa-phone"></i> +7 (777) 777-77-77</a></li>
+        <li><a href="#"><i class="fab fa-telegram"></i> ecoscan</a></li>
+        <li><a href="#"><i class="fab fa-instagram"></i> ecoscan</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>Copyright © 2025 EcoScan, TOO</p>
+  </div>
+</footer>
+    
+
+    <script src="./user.js"></script>
+</body>
+</html>
