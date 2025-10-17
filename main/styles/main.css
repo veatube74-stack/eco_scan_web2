@@ -1145,9 +1145,111 @@
     }
 }
 
+/* Telegram Section */
+.telegram-section {
+    padding: 70px 0;
+    text-align: center;
+}
 
+.telegram-content {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
 
+.telegram-icon {
+    font-size: 4rem;
+    color: #0088cc;
+    margin-bottom: 10px;
+}
 
+.telegram-text h2 {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.telegram-text p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    opacity: 0.9;
+    margin-bottom: 10px;
+}
+
+.telegram-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: #0088cc;
+    color: white;
+    padding: 16px 32px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    border: 2px solid #0088cc;
+    box-shadow: 0 4px 15px rgba(0, 136, 204, 0.3);
+}
+
+.telegram-btn:hover {
+    background: transparent;
+    border-color: #0088cc;
+    color: #0088cc;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 136, 204, 0.4);
+}
+
+.telegram-btn i {
+    font-size: 1.3rem;
+}
+
+/* Адаптивность Telegram секции */
+@media (max-width: 768px) {
+    .telegram-section {
+        padding: 50px 0;
+    }
+    
+    .telegram-content {
+        gap: 25px;
+        padding: 0 20px;
+    }
+    
+    .telegram-icon {
+        font-size: 3rem;
+    }
+    
+    .telegram-text h2 {
+        font-size: 1.8rem;
+    }
+    
+    .telegram-text p {
+        font-size: 1rem;
+    }
+    
+    .telegram-btn {
+        padding: 14px 28px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .telegram-text h2 {
+        font-size: 1.6rem;
+    }
+    
+    .telegram-btn {
+        padding: 12px 24px;
+        font-size: 0.95rem;
+    }
+    
+    .telegram-icon {
+        font-size: 2.5rem;
+    }
+}
 
 
 
