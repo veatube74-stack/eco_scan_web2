@@ -50,63 +50,63 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-  /* ======= PROFILE DATA ======= */
-  const avatarImg = document.getElementById('avatarImg');
-  const avatarPlaceholder = document.getElementById('avatarPlaceholder');
-  const DEFAULT_AVATAR = '../images/logo-green.png';
-  const STORAGE_KEYS = {
-    avatar: 'ecoscan_avatar',
-    user: 'ecoscan_user',
-    tasks: 'ecoscan_tasks'
-  };
+//   /* ======= PROFILE DATA ======= */
+//   const avatarImg = document.getElementById('avatarImg');
+//   const avatarPlaceholder = document.getElementById('avatarPlaceholder');
+//   const DEFAULT_AVATAR = '../images/logo-green.png';
+//   const STORAGE_KEYS = {
+//     avatar: 'ecoscan_avatar',
+//     user: 'ecoscan_user',
+//     tasks: 'ecoscan_tasks'
+//   };
 
-  function setAvatar(dataUrl) {
-    if (!avatarImg || !avatarPlaceholder) return;
-    if (!dataUrl) {
-      avatarImg.style.display = 'none';
-      avatarPlaceholder.style.display = 'block';
-      avatarPlaceholder.querySelector('img').src = DEFAULT_AVATAR;
-    } else {
-      avatarImg.src = dataUrl;
-      avatarImg.style.display = 'block';
-      avatarPlaceholder.style.display = 'none';
-    }
-  }
+//   function setAvatar(dataUrl) {
+//     if (!avatarImg || !avatarPlaceholder) return;
+//     if (!dataUrl) {
+//       avatarImg.style.display = 'none';
+//       avatarPlaceholder.style.display = 'block';
+//       avatarPlaceholder.querySelector('img').src = DEFAULT_AVATAR;
+//     } else {
+//       avatarImg.src = dataUrl;
+//       avatarImg.style.display = 'block';
+//       avatarPlaceholder.style.display = 'none';
+//     }
+//   }
 
-  function loadUser() {
-    let user = { firstName: '', lastName: '', email: '', level: 153, points: 543850, streak: 90 };
-    try {
-      const raw = localStorage.getItem(STORAGE_KEYS.user);
-      if (raw) user = Object.assign(user, JSON.parse(raw));
-    } catch (e) {}
+//   function loadUser() {
+//     let user = { firstName: '', lastName: '', email: '', level: 153, points: 543850, streak: 90 };
+//     try {
+//       const raw = localStorage.getItem(STORAGE_KEYS.user);
+//       if (raw) user = Object.assign(user, JSON.parse(raw));
+//     } catch (e) {}
 
-    document.getElementById('userLevel').textContent = user.level;
-    document.getElementById('streakNum').textContent = user.streak;
-    document.getElementById('profile-heading').textContent =
-      user.firstName ? `${user.firstName} ${user.lastName || ''}` : 'Name';
-    document.getElementById('userHandle').textContent =
-      user.email ? '@' + user.email.split('@')[0] : '@userName_name_1';
-  }
+//     document.getElementById('userLevel').textContent = user.level;
+//     document.getElementById('streakNum').textContent = user.streak;
+//     document.getElementById('profile-heading').textContent =
+//       user.firstName ? `${user.firstName} ${user.lastName || ''}` : 'Name';
+//     document.getElementById('userHandle').textContent =
+//       user.email ? '@' + user.email.split('@')[0] : '@userName_name_1';
+//   }
 
-  try {
-    const saved = localStorage.getItem(STORAGE_KEYS.avatar);
-    setAvatar(saved || null);
-  } catch (e) {
-    setAvatar(null);
-  }
+//   try {
+//     const saved = localStorage.getItem(STORAGE_KEYS.avatar);
+//     setAvatar(saved || null);
+//   } catch (e) {
+//     setAvatar(null);
+//   }
 
-  loadUser();
+//   loadUser();
 
-  /* ======= LOGOUT ======= */
-  const logoutBtn2 = document.getElementById('logoutBtn2');
-  if (logoutBtn2) {
-    logoutBtn2.addEventListener('click', () => {
-      localStorage.removeItem(STORAGE_KEYS.avatar);
-      localStorage.removeItem(STORAGE_KEYS.user);
-      localStorage.removeItem(STORAGE_KEYS.tasks);
-      window.location.href = '../main/main.html';
-    });
-  }
+//   /* ======= LOGOUT ======= */
+//   const logoutBtn2 = document.getElementById('logoutBtn2');
+//   if (logoutBtn2) {
+//     logoutBtn2.addEventListener('click', () => {
+//       localStorage.removeItem(STORAGE_KEYS.avatar);
+//       localStorage.removeItem(STORAGE_KEYS.user);
+//       localStorage.removeItem(STORAGE_KEYS.tasks);
+//       window.location.href = '../main/main.html';
+//     });
+//   }
 
   /* ======= EDIT PROFILE ======= */
   const editProfile = document.getElementById('editProfile');
@@ -157,5 +157,5 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   function loadUser(){ try{ const raw = localStorage.getItem(STORAGE_KEYS.user); if(raw){ const u = JSON.parse(raw); document.getElementById('userLevel').textContent = u.level || 153; document.getElementById('points').textContent = (u.points||0).toLocaleString('ru-RU'); document.getElementById('streakNum').textContent = u.streak||0; document.getElementById('profile-heading').textContent = (u.firstName? u.firstName + ' ' + (u.lastName||'') : 'Name'); document.getElementById('userHandle').textContent = u.email ? '@'+u.email.split('@')[0] : '@userName_name_1'; } }catch(e){ } }
-  loadUser();
-  updateTaskUI(loadTasks());
+  // loadUser();
+  // updateTaskUI(loadTasks());

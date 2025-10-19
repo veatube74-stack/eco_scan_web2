@@ -1,34 +1,52 @@
 <?php
-header('Content-Type: application/json');
-require 'db.php';
+session_start();
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
-$data = json_decode(file_get_contents("php://input"), true);
+$servername = "localhost";
+$username = "root";
+$dbpassword = "";
+$dbname = "ecoscan";
 
-$username = trim($data['username'] ?? '');
-$password = trim($data['password'] ?? '');
-
-if (!$username || !$password) {
-  echo json_encode(['success' => false, 'message' => 'Введите логин и пароль']);
-  exit;
+$conn = new mysqli($servername, $username, $dbpassword, $dbname);
+if ($conn->connect_error) {
+    die("Ошибка подключения: " . $conn->connect_error);
 }
 
-$stmt = $pdo->prepare("SELECT * FROM users WHERE username = ? OR email = ?");
-$stmt->execute([$username, $username]);
-$user = $stmt->fetch();
+$login = $_POST['username'] ?? '';
+$password = $_POST['password'] ?? '';
 
-if (!$user || !password_verify($password, $user['password'])) {
-  echo json_encode(['success' => false, 'message' => 'Неверный логин или пароль']);
-  exit;
+if (empty($login) || empty($password)) {
+    die('⚠️ Введите логин и пароль.');
 }
 
-echo json_encode([
-  'success' => true,
-  'user' => [
-    'id' => $user['id'],
-    'firstName' => $user['first_name'],
-    'lastName' => $user['last_name'],
-    'email' => $user['email'],
-    'username' => $user['username']
-  ]
-]);
+$sql = "SELECT * FROM users WHERE username = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("s", $login);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows === 1) {
+    $user = $result->fetch_assoc();
+
+    if (password_verify($password, $user['password'])) {
+        // сохраняем пользователя в сессию
+        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['firstname'] = $user['firstname'];
+        $_SESSION['lastname'] = $user['lastname'];
+        $_SESSION['username'] = $user['username'];
+        $_SESSION['email'] = $user['email'];
+
+        // редиректим на профиль
+        header("Location: ../profile/profile.php");
+        exit();
+    } else {    
+        echo "❌ Неверный пароль.";
+    }
+} else {
+    echo "❌ Пользователь не найден.";
+}
+
+$stmt->close();
+$conn->close();
 ?>

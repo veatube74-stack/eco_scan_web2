@@ -1,34 +1,50 @@
 <?php
-header('Content-Type: application/json');
-require 'db.php';
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
-$data = json_decode(file_get_contents("php://input"), true);
+// Получаем данные из формы
+$firstname = $_POST['firstname'] ?? '';
+$lastname = $_POST['lastname'] ?? '';
+$email = $_POST['email'] ?? '';
+$login = $_POST['username'] ?? '';
+$password = $_POST['password'] ?? '';
+$confirm_password = $_POST['confirm_password'] ?? '';
 
-$firstName = trim($data['firstName'] ?? '');
-$lastName = trim($data['lastName'] ?? '');
-$email = trim($data['email'] ?? '');
-$username = trim($data['username'] ?? '');
-$password = trim($data['password'] ?? '');
-
-if (!$firstName || !$lastName || !$email || !$username || !$password) {
-  echo json_encode(['success' => false, 'message' => 'Заполните все поля']);
-  exit;
+// Проверка, что поля не пустые
+if (empty($login) || empty($password) || empty($confirm_password)) {
+    die('⚠️ Заполните все обязательные поля.');
 }
 
-// Проверяем, есть ли такой email или username
-$stmt = $pdo->prepare("SELECT id FROM users WHERE email = ? OR username = ?");
-$stmt->execute([$email, $username]);
-if ($stmt->fetch()) {
-  echo json_encode(['success' => false, 'message' => 'Пользователь уже существует']);
-  exit;
+// Проверка совпадения паролей
+if ($password !== $confirm_password) {
+    die('❌ Пароли не совпадают!');
 }
 
-// Хэшируем пароль
-$hash = password_hash($password, PASSWORD_DEFAULT);
+// Хешируем пароль перед сохранением
+$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-// Добавляем пользователя
-$stmt = $pdo->prepare("INSERT INTO users (first_name, last_name, email, username, password) VALUES (?, ?, ?, ?, ?)");
-$stmt->execute([$firstName, $lastName, $email, $username, $hash]);
+// --- Пример сохранения в базу (MySQLi) ---
+$servername = "localhost";
+$username = "root";
+$dbpassword = ""; // если нет пароля на локалке — оставь пустым
+$dbname = "ecoscan"; // заменишь на свою базу
 
-echo json_encode(['success' => true, 'message' => 'Регистрация успешна!']);
+$conn = new mysqli($servername, $username, $dbpassword, $dbname);
+
+// Проверка соединения
+if ($conn->connect_error) {
+    die("Ошибка подключения: " . $conn->connect_error);
+}
+
+// SQL-запрос
+$sql = "INSERT INTO users (firstname, lastname, email, username, password) 
+        VALUES ('$firstname', '$lastname', '$email', '$login', '$hashedPassword')";
+
+if ($conn->query($sql) === TRUE) {
+    echo "✅ Регистрация прошла успешно!";
+} else {
+    echo "Ошибка: " . $conn->error;
+}
+
+$conn->close();
 ?>

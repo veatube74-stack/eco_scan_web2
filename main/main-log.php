@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +23,7 @@
  <header class="header">
   <div class="container header-content">
     <div class="logo">
-      <a href="../main/main-log.html">
+      <a href="../main/main-log.php">
         <img src="../images/logo_yellow.png" alt="EcoScan">
         <h1>EcoScan</h1>
       </a>
@@ -35,19 +38,19 @@
     
     <nav class="nav" id="navMenu">
       <ul>
-        <li><a href="../main/main-log.html">Главная</a></li>
+        <li><a href="../main/main-log.php">Главная</a></li>
         <li><a href="../about/about.html">О нас</a></li>
-        <li><a href="../map/maplog.html">Карта</a></li>
-        <li><a href="../contact/contactlog.html">Контакты</a></li>
-        <li><a href="../bonus/bonus.html">Бонусы</a></li>
-        <li><a href="../rating/rating.html">Рейтинг</a></li>
+        <li><a href="../map/maplog.php">Карта</a></li>
+        <li><a href="../contact/contactlog.php">Контакты</a></li>
+        <li><a href="../bonus/bonus.php">Бонусы</a></li>
+        <li><a href="../rating/rating.php">Рейтинг</a></li>
       </ul>
   
       <!-- Профиль в мобильном меню как обычный пункт -->
        <div class="mobile-profile">
         <ul>
           <li>
-            <a href="../profile/profile.html">
+            <a href="../profile/profil.php">
                 <i class="fas fa-user"></i>
                 &nbsp;&nbsp;Личный кабинет
             </a>
@@ -84,7 +87,7 @@
           </button>
 
           <div class="dropdown-menu">
-            <a href="../profile/profile.html" class="dropdown-item">
+            <a href="../profile/profile.php" class="dropdown-item">
                 <i class="fas fa-user"></i>
                 Личный кабинет
             </a>

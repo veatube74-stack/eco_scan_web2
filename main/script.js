@@ -183,57 +183,160 @@ window.addEventListener('click', (e) => {
     }
 });
 
+//убрал на время тестов AK
 // Обработка форм
-document.getElementById('loginForm').addEventListener('submit', (e) => {
-    e.preventDefault();
-    // Здесь будет логика входа
-    const username = document.getElementById('loginUsername').value;
-    const password = document.getElementById('loginPassword').value;
+// document.getElementById('loginForm').addEventListener('submit', (e) => {
+//     e.preventDefault();
+//     // Здесь будет логика входа
+//     const username = document.getElementById('loginUsername').value;
+//     const password = document.getElementById('loginPassword').value;
     
-    // Простая валидация
-    if (username && password) {
-        // alert(`Вход выполнен для пользователя: ${username}`);
-        loginModal.style.display = 'none';
-        window.location.href = '../profile/profile.html';
+//     // Простая валидация
+//     if (username && password) {
+//         alert(`Вход выполнен для пользователя: ${username}`);
+//         loginModal.style.display = 'none';
+//         window.open('../php/login.php', '_blank');
+//         // window.location.href = '../profile/profile.html';
 
-        // Успешный вход - перенаправление на profile.html
-        // setTimeout(() => {
-        //     window.location.href = '../profile/profile.html';
-        // }, 1000); // Перенаправление через 1 секунду  
-    } else {
+//         // Успешный вход - перенаправление на profile.html
+//         // setTimeout(() => {
+//         //     window.location.href = '../profile/profile.html';
+//         // }, 1000); // Перенаправление через 1 секунду  
+//     } else {
+//         alert('Пожалуйста, заполните все поля');
+//     }
+// });
+
+ocument.getElementById('loginForm').addEventListener('submit', (e) => {
+    e.preventDefault(); // блокируем стандартную отправку
+
+    const username = document.getElementById('loginUsername').value.trim();
+    const password = document.getElementById('loginPassword').value.trim();
+
+    if (!username || !password) {
         alert('Пожалуйста, заполните все поля');
+        return;
     }
+
+    const form = e.target;
+    const actionUrl = form.getAttribute('action'); // "../php/login.php"
+    const method = form.getAttribute('method');    // "post"
+
+    // создаём временную форму для отправки POST-запроса в новой вкладке
+    const tempForm = document.createElement('form');
+    tempForm.action = actionUrl;
+    tempForm.method = method;
+    tempForm.target = '_blank'; // новая вкладка
+
+    // добавляем данные
+    const userField = document.createElement('input');
+    userField.type = 'hidden';
+    userField.name = 'username';
+    userField.value = username;
+
+    const passField = document.createElement('input');
+    passField.type = 'hidden';
+    passField.name = 'password';
+    passField.value = password;
+
+    tempForm.appendChild(userField);
+    tempForm.appendChild(passField);
+
+    document.body.appendChild(tempForm);
+    tempForm.submit(); // отправляем
+    document.body.removeChild(tempForm); // чистим DOM
 });
 
-document.getElementById('registerForm').addEventListener('submit', (e) => {
+//уберу ненадолго либо надолго АК
+// document.getElementById('registerForm').addEventListener('submit', (e) => {
+//     e.preventDefault();
+//     const firstName = document.getElementById('registerFirstName').value;
+//     const lastName = document.getElementById('registerLastName').value;
+//     const email = document.getElementById('registerEmail').value;
+//     const username = document.getElementById('registerUsername').value;
+//     const password = document.getElementById('registerPassword').value;
+//     const confirmPassword = document.getElementById('registerConfirmPassword').value;
+    
+//     // Валидация
+//     if (!firstName || !lastName || !email || !username || !password || !confirmPassword) {
+//         alert('Пожалуйста, заполните все поля');
+//         return;
+//     }
+    
+//     if (password !== confirmPassword) {
+//         alert('Пароли не совпадают!');
+//         return;
+//     }
+    
+//     if (password.length < 6) {
+//         alert('Пароль должен содержать минимум 6 символов');
+//         return;
+//     }
+    
+//     // Здесь будет логика регистрации
+//     alert(`Регистрация успешна!\nДобро пожаловать, ${firstName} ${lastName}!`);
+//     registerModal.style.display = 'none';
+//     window.location.href = '../profile/profile.html';
+// });
+
+document.getElementById('registerForm').addEventListener('submit', async (e) => {
     e.preventDefault();
-    const firstName = document.getElementById('registerFirstName').value;
-    const lastName = document.getElementById('registerLastName').value;
-    const email = document.getElementById('registerEmail').value;
-    const username = document.getElementById('registerUsername').value;
+
+    const firstName = document.getElementById('registerFirstName').value.trim();
+    const lastName = document.getElementById('registerLastName').value.trim();
+    const email = document.getElementById('registerEmail').value.trim();
+    const username = document.getElementById('registerUsername').value.trim();
     const password = document.getElementById('registerPassword').value;
     const confirmPassword = document.getElementById('registerConfirmPassword').value;
-    
-    // Валидация
+
+    // 🔹 Простая валидация
     if (!firstName || !lastName || !email || !username || !password || !confirmPassword) {
-        alert('Пожалуйста, заполните все поля');
+        alert('⚠️ Пожалуйста, заполните все поля');
         return;
     }
-    
+
     if (password !== confirmPassword) {
-        alert('Пароли не совпадают!');
+        alert('❌ Пароли не совпадают!');
         return;
     }
-    
+
     if (password.length < 6) {
         alert('Пароль должен содержать минимум 6 символов');
         return;
     }
-    
-    // Здесь будет логика регистрации
-    alert(`Регистрация успешна!\nДобро пожаловать, ${firstName} ${lastName}!`);
-    registerModal.style.display = 'none';
-    window.location.href = '../profile/profile.html';
+
+    // 🔹 Формируем данные для отправки
+    const formData = new FormData();
+    formData.append('firstname', firstName);
+    formData.append('lastname', lastName);
+    formData.append('email', email);
+    formData.append('username', username);
+    formData.append('password', password);
+    formData.append('confirm_password', confirmPassword);
+
+    try {
+        // 🔹 Отправка на сервер
+        const response = await fetch('../php/register.php', {
+            method: 'POST',
+            body: formData
+        });
+
+        const text = await response.text();
+
+        // 🔹 Проверяем ответ сервера
+        if (text.includes('Регистрация прошла успешно')) {
+            alert(`✅ Добро пожаловать, ${firstName} ${lastName}!`);
+            // Закрываем модалку и редиректим
+            document.getElementById('registerModal').style.display = 'none';
+            window.location.href = '../profile/profile.html';
+        } else {
+            alert('❗ Ошибка: ' + text);
+        }
+
+    } catch (error) {
+        console.error('Ошибка:', error);
+        alert('🚫 Произошла ошибка при регистрации.');
+    }
 });
 
 // Предотвращение закрытия при клике на само модальное окно

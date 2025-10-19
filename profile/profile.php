@@ -1,3 +1,19 @@
+<?php
+session_start();
+echo '<pre>';
+echo '</pre>';
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: ../main/main.html");
+    exit();
+}
+
+$firstname = $_SESSION['firstname'] ?? '';
+$lastname = $_SESSION['lastname'] ?? '';
+$username = $_SESSION['username'] ?? '';
+$email = $_SESSION['email'] ?? '';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +36,7 @@
  <header class="header">
   <div class="container header-content">
     <div class="logo">
-      <a href="../main/main-log.html">
+      <a href="../main/main-log.php">
         <img src="../images/logo_yellow.png" alt="EcoScan">
         <h1>EcoScan</h1>
       </a>
@@ -35,25 +51,25 @@
     
     <nav class="nav" id="navMenu">
       <ul>
-        <li><a href="../main/main-log.html">Главная</a></li>
+        <li><a href="../main/main-log.php">Главная</a></li>
         <li><a href="../about/about.html">О нас</a></li>
-        <li><a href="../map/maplog.html">Карта</a></li>
-        <li><a href="../contact/contact.html">Контакты</a></li>
-        <li><a href="../bonus/bonus.html">Бонусы</a></li>
-        <li><a href="../rating/rating.html">Рейтинг</a></li>
+        <li><a href="../map/maplog.php">Карта</a></li>
+        <li><a href="../contact/contactlog.php">Контакты</a></li>
+        <li><a href="../bonus/bonus.php">Бонусы</a></li>
+        <li><a href="../rating/rating.php">Рейтинг</a></li>
       </ul>
   
       <!-- Профиль в мобильном меню как обычный пункт -->
        <div class="mobile-profile">
         <ul>
           <li>
-            <a href="./profile.html">
+            <a href="./profile.php">
                 <i class="fas fa-user"></i>
                 &nbsp;&nbsp;Личный кабинет
             </a>
           </li>
           <li>
-            <a href="../main/main.html" class="logout-mobile">
+            <a href="../php/logout.php" class="logout-mobile">
                 <i class="fas fa-sign-out-alt"></i>
                 Выйти
             </a>
@@ -87,7 +103,7 @@
 
      <!-- ЛК с выпадающим меню -->
       <div class="profile">
-        <div class="profile-dropdown">
+        <div class="profile-dropdown">  
           <button class="profile-btn">
             <img src="../images/logo-green.png" alt="User Avatar" class="avatarnav" />
             <span>Личный кабинет</span>
@@ -95,11 +111,11 @@
           </button>
 
           <div class="dropdown-menu">
-            <a href="./profile.html" class="dropdown-item">
+            <a href="./profile.php" class="dropdown-item">
                 <i class="fas fa-user"></i>
                 Личный кабинет
             </a>
-            <a href="../main/main.html" class="dropdown-item logout">
+            <a href="../php/logout.php" class="dropdown-item logout">
                 <i class="fas fa-sign-out-alt"></i>
                 Выйти
             </a>
@@ -131,8 +147,12 @@
       </div>
 
       <div class="user-info">
-        <h1 id="profile-heading" class="user-name">&username</h1>
-        <div class="user-handle" id="userHandle">@userName_name_1</div>
+        <h1 id="profile-heading" class="user-name">
+          <?= htmlspecialchars($firstname . ' ' . $lastname) ?>
+        </h1>
+        <div class="user-handle" id="userHandle">
+          @<?= htmlspecialchars($username) ?>
+        </div>
         <div class="join" id="joinDate">Присоединился(-лась) 1 марта, 2025</div>
         <div id="motivationWidget" aria-live="polite" class="motivation"></div>
         <div class="mood-row">
