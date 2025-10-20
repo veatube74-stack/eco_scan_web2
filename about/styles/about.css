@@ -449,3 +449,365 @@
 .btn-secondary:hover a {
     color: #2e7d32 !important;
 }
+
+
+/* Кнопка Наверх */
+.push-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: var(--brand-dark);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+    box-shadow: 0 0px 20px rgba(255, 255, 255, 0.8);
+}
+
+.push-to-top:hover {
+    background: var(--accent);
+    color: var(--brand-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.push-to-top.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.push-to-top i {
+    font-size: 18px;  
+    font-weight: bold;
+}
+
+/* Адаптив для кнопки Наверх */
+@media (max-width: 768px) {
+    .push-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+    }
+    
+    .push-to-top i {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .push-to-top {
+        bottom: 15px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* About Section */
+.about {
+    padding: 80px 0;
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    max-width: 1200px;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-text h2 {
+    font-size: 2.5rem;
+    color: var(--brand-dark);
+    margin-bottom: 25px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.about-image {
+    flex: 1;
+}
+
+.about-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+}
+
+/* Адаптив для секции About */
+@media (max-width: 900px) {
+    .about-content {
+        flex-direction: column;
+        gap: 40px;
+        text-align: center;
+    }
+    
+    .about-text h2 {
+        font-size: 2rem;
+    }
+    
+    .about-text p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .about {
+        padding: 60px 0;
+    }
+    
+    .about-text h2 {
+        font-size: 1.8rem;
+    }
+}
+
+/* Advantages Section */
+.advantages {
+    padding: 80px 0;
+}
+
+.advantages-content {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    max-width: 1200px;
+}
+
+.advantages-image {
+    flex: 1;
+}
+
+.advantages-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.advantages-text {
+    flex: 1;
+}
+
+.advantages-text h2 {
+    font-size: 2.5rem;
+    color: var(--brand-dark);
+    margin-bottom: 30px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.advantages-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.advantages-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.advantages-list li:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.advantages-list li i {
+    color: var(--accent);
+    font-size: 1.3rem;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+.advantages-list li span {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* Адаптив для секции Advantages */
+@media (max-width: 900px) {
+    .advantages-content {
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    .advantages-text h2 {
+        font-size: 2rem;
+        text-align: center;
+    }
+    
+    .advantages-list li {
+        padding: 12px;
+    }
+    
+    .advantages-list li span {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .advantages {
+        padding: 60px 0;
+    }
+    
+    .advantages-text h2 {
+        font-size: 1.8rem;
+    }
+    
+    .advantages-list li {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    
+    .advantages-list li i {
+        margin-top: 0;
+    }
+}
+
+/* Goals Section */
+.goals {
+    padding: 80px 0;
+}
+
+.goals-content {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    max-width: 1200px;
+}
+
+.goals-text {
+    flex: 1;
+}
+
+.goals-text h2 {
+    font-size: 2.5rem;
+    color: var(--brand-dark);
+    margin-bottom: 30px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.goals-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.goals-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 18px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    border-left: 4px solid var(--accent);
+    transition: all 0.3s ease;
+}
+
+.goals-list li:hover {
+    background: #e9ecef;
+    transform: translateX(5px);
+}
+
+.goals-list li i {
+    color: var(--accent);
+    font-size: 1.3rem;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+.goals-list li span {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+.goals-image {
+    flex: 1;
+}
+
+.goals-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Адаптив для секции Goals */
+@media (max-width: 900px) {
+    .goals-content {
+        flex-direction: column-reverse;
+        gap: 40px;
+    }
+    
+    .goals-text h2 {
+        font-size: 2rem;
+        text-align: center;
+    }
+    
+    .goals-list li {
+        padding: 12px;
+    }
+    
+    .goals-list li span {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .goals {
+        padding: 60px 0;
+    }
+    
+    .goals-text h2 {
+        font-size: 1.8rem;
+    }
+    
+    .goals-list li {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    
+    .goals-list li i {
+        margin-top: 0;
+    }
+}
+
+.img {
+  padding: 80px 0;
+}
+
+.img img {
+  width: 90%;
+  margin-left: 75px;
+}
