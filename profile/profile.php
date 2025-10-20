@@ -52,7 +52,7 @@ $email = $_SESSION['email'] ?? '';
     <nav class="nav" id="navMenu">
       <ul>
         <li><a href="../main/main-log.php">Главная</a></li>
-        <li><a href="../about/about.html">О нас</a></li>
+        <li><a href="../about/aboutlog.php">О нас</a></li>
         <li><a href="../map/maplog.php">Карта</a></li>
         <li><a href="../contact/contactlog.php">Контакты</a></li>
         <li><a href="../bonus/bonus.php">Бонусы</a></li>
