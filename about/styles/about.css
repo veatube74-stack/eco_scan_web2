@@ -1,0 +1,451 @@
+/* Стили для кнопок авторизации */
+.auth-buttons {
+    display: flex;
+    gap: 15px;
+}
+        
+.btn {
+    padding: 8px 20px;
+    border-radius: 30px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+/* Убираем стандартные стили ссылок */
+.btn a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+/* Кнопка Входа - прозрачная с белыми границами */
+.btn-in {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+}
+
+.btn-in:hover {
+    background: white;
+    color: #0C3A2D;
+    border: 2px solid white;
+}
+
+/* Кнопка Регистрации - желтая с темно-зеленым текстом */
+.btn-reg {
+    background: var(--ligt-green);
+    border: 2px solid var(--ligt-green);
+    color: white;
+}
+
+.btn-reg:hover {
+    background: transparent;
+    color: #FFB902;
+    border: 2px solid #FFB902;
+}
+
+/* ==== АДАПТИВ ДЛЯ HEADER ==== */
+/* .burger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.burger span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: white;
+  border-radius: 3px;
+  transition: 0.3s;
+} */
+
+/* Планшеты и телефоны */
+/* @media (max-width: 900px) {
+  nav {
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    background: var(--brand-dark);
+    width: 200px;
+    border-radius: 10px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .auth-buttons {
+    display: none; /* Скрываем кнопки на мобильной версии 
+  }
+
+  .burger {
+    display: flex;
+  } */
+
+  /* Когда меню активно */
+  /* nav.active {
+    display: flex;
+  } */
+
+  /* Анимация бургер-кнопки */
+  /* .burger.active span:nth-child(1) {
+    transform: rotate(45deg) translateY(7px);
+  }
+  .burger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .burger.active span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-7px);
+  }
+} */
+
+
+
+
+
+
+/* BURGER MENU MAIN */
+/* ===== DESKTOP VERSION FIXES ===== */
+/* Скрываем мобильные элементы в десктопной версии */
+.mobile-auth-buttons,
+.mobile-social {
+  display: none;
+}
+
+.burgerMain {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25px;
+  height: 18px;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.burgerMain span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: white;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+/* Анимация бургер-кнопки в крестик */
+.burgerMain.active span:nth-child(1) {
+  transform: rotate(45deg) translateY(7px);
+  background: var(--accent);
+}
+
+.burgerMain.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.burgerMain.active span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-7px);
+  background: var(--accent);
+}
+
+/* ===== MOBILE NAVIGATION ===== */
+@media (max-width: 900px) {
+  .burgerMain {
+    display: flex;
+  }
+
+  #navMain {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 85%;
+    height: 100vh;
+    background: var(--brand-dark);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 80px;
+    transition: right 0.4s ease;
+    z-index: 999;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+  }
+
+  #navMain.active {
+    right: 0;
+  }
+
+  #navMain ul {
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+    padding: 0 20px;
+  }
+
+  #navMain li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  #navMain a {
+    display: block;
+    padding: 18px 15px;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    color: white;
+    text-decoration: none;
+  }
+
+  #navMain a:hover {
+    color: var(--accent);
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+/* Кнопки в мобильном меню */
+.mobile-auth-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 20px;
+  width: 100%;
+}
+
+.mobile-btn {
+  padding: 14px 20px;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  font-size: 16px;
+  text-align: center;
+  width: 100%;
+  text-decoration: none;
+  display: block;
+}
+
+.mobile-btn-in {
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+}
+
+.mobile-btn-in:hover {
+  background: white !important;
+  color: var(--brand-dark) !important;
+}
+        
+.mobile-btn-reg {
+  background: var(--accent);
+  border: 2px solid var(--accent);
+  color: var(--brand-dark) !important;
+}
+        
+.mobile-btn-reg:hover {
+  background: transparent;
+  border-color: var(--accent);
+  color: var(--accent) !important;
+}
+
+
+
+
+/* Соцсети в стиле econetwork.green - ИСПРАВЛЕННЫЕ */
+.mobile-social {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 30px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: auto;
+}
+
+.social-petal {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px; /* Меньше скругление как на сайте */
+  background: rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 20px; /* Увеличил размер иконок */
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Центрирование иконок */
+.social-petal i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  line-height: 1;
+}
+
+.social-petal-icon:hover{
+  color: var(--accent);
+}
+
+  /* Альтернативные цвета (закомментированы, можно использовать вместо градиентов) */
+  /*
+  .social-petal.instagram:hover { background: #E1306C; }
+  .social-petal.telegram:hover { background: #0088CC; }
+  .social-petal.vk:hover { background: #4C75A3; }
+  .social-petal.youtube:hover { background: #FF0000; }
+  */
+
+  .social-petal:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    border-color: transparent;
+  }
+
+
+
+
+  /* Скрываем обычные кнопки на мобильных */
+  .auth-buttons {
+    display: none;
+  }
+
+  /* Блокировка прокрутки при открытом меню */
+  body.menu-open {
+    overflow: hidden;
+  }
+
+  /* Оверлей для затемнения фона */
+  .nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .nav-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+/* Для очень маленьких экранов - кнопки друг под другом */
+/* @media (max-width: 480px) {
+  .mobile-auth-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .mobile-btn {
+    width: 100%;
+  }
+} */
+
+@media (max-width: 600px) {
+  #navMain {
+    width: 90%;
+  }
+  
+  #navMain a {
+    font-size: 16px;
+    padding: 16px 15px;
+  }
+  
+  .social-petal {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+  
+  /* .mobile-btn {
+    padding: 10px 15px;
+    font-size: 13px;
+  } */
+}
+
+
+
+
+
+
+
+
+/* Hero section */
+.hero {
+    background: linear-gradient(rgba(12, 58, 45, 0.9), rgba(12, 58, 45, 0.85)), url('https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?ixlib=rb-4.0.3') center/cover no-repeat;
+    /* linear-gradient(rgba(46, 125, 50, 0.9), rgba(39, 103, 43, 0.85)), 
+    rgb(12, 58, 45)
+    rgba(12, 58, 45, 1)
+    */
+    color: white;
+    padding: 80px 0;
+    text-align: center;
+}
+        
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+        
+.hero h1 { 
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+        
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    opacity: 0.95;
+}
+        
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 30px;
+}
+        
+.btn-large {
+    padding: 12px 30px;
+    font-size: 1.1rem;
+}
+        
+.btn-secondary {
+    background: transparent;
+    border: 2px solid white;
+}
+        
+.btn-secondary:hover {
+    background: var(--accent);
+    border: 2px solid #2e7d32;
+}
+
+.btn-secondary a {
+    color: white !important;
+    text-decoration: none;
+}
+
+.btn-secondary:hover a {
+    color: #2e7d32 !important;
+}

@@ -2,10 +2,138 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>EcoScan - Главная</title>
+    <link rel="stylesheet" href="./styles/about.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="./styles/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <header>
+  <div class="container header-content">
+    <div class="logo">
+      <a href="./main.html">
+        <img src="../images/logo_yellow.png" alt="EcoScan">
+        <h1>EcoScan</h1>
+      </a>
+    </div>
+
+    <!-- Бургер -->
+    <div class="burgerMain" id="burgerMain">
+      <span></span><span></span><span></span>
+    </div>
+
+<nav id="navMain">
+  <ul>
+    <li><a href="./main.html">Главная</a></li>
+    <li><a href="../about/about.html">О нас</a></li>
+    <li><a href="../map/map.html">Карта</a></li>
+    <li><a href="../contact/contact.html">Связь с нами</a></li>
+  </ul>
+  
+  <!-- Кнопки в мобильном меню -->
+<div class="mobile-auth-buttons">
+  <button class="mobile-btn mobile-btn-in" id="mobileLoginBtn">Войти</button>
+  <button class="mobile-btn mobile-btn-reg" id="mobileRegisterBtn">Регистрация</button>
+</div>
+  
+  <!-- Соцсети в стиле econetwork.green -->
+  <div class="mobile-social">
+    <a href="https://www.instagram.com/ecoscan06?igsh=MXd1czRyZjR1bnc3eQ==" class="social-petal-icon"><i class="fab fa-instagram"></i></a>
+    <a href="#" class="social-petal-icon"><i class="fab fa-telegram"></i></a>
+    <a href="#" class="social-petal-icon"><i class="fas fa-envelope"></i></a>
+    <a href="#" class="social-petal-icon"><i class="fas fa-phone"></i></a>
+  </div>
+</nav>
+
+<!-- Оверлей для затемнения фона -->
+<div class="nav-overlay" id="navOverlay"></div>
+
+    <div class="auth-buttons">
+      <button class="btn btn-in" id="loginBtn">Вход</button>
+      <button class="btn btn-reg" id="registerBtn">Регистрация</button>
+    </div>
+  </div>
+</header>
+
+    <!-- Модальное окно входа -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Вход в аккаунт</h2>
+            <form action="../php/login.php" method="post" id="loginForm">
+                <div class="form-group">
+                    <input type="text" id="loginUsername" name="username" required>
+                    <label for="loginUsername">Логин</label>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="loginPassword" name="password" required>
+                    <label for="loginPassword">Пароль</label>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Войти</button>
+            </form>
+            <div class="modal-footer">
+                <p>Нет аккаунта? <a href="#" id="goToRegister">Зарегистрироваться</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно регистрации -->
+    <div class="modal" id="registerModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Регистрация</h2>
+            <form action="../php/register.php" method="post" id="registerForm">
+                <div class="form-group">
+                    <label for="registerFirstName">Имя</label>
+                    <input type="text" id="registerFirstName" name="firstname" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerLastName">Фамилия</label>
+                    <input type="text" id="registerLastName" name="lastname" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">Email</label>
+                    <input type="email" id="registerEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerUsername">Логин</label>
+                    <input type="text" id="registerUsername" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Пароль</label>
+                    <input type="password" id="registerPassword" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerConfirmPassword">Подтвердите пароль</label>
+                    <input type="password" id="registerConfirmPassword" name="confirm_password" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Зарегистрироваться</button>
+            </form>
+            <div class="modal-footer">
+                <p>Уже есть аккаунт? <a href="#" id="goToLogin">Войти</a></p>
+            </div>
+        </div>
+    </div>
+
+        <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>ECO SCANV - ПРОЕКТ КОТОРЫЙ ИЗМЕНИТ МИР</h1>
+            <p>Мы верим, что большие перемены начинаются с простых действий. ECO Scan создаёт будущее, где забота о планете становится частью повседневной жизни.</p>
+            
+            <div class="hero-buttons">
+                <button class="btn btn-secondary btn-large">
+                    <a href="../map/map.html"><i class="fas fa-map-marker-alt"></i> Узнать подробнее</a>
+                </button>
+            </div>
+        </div>
+    </section>
     
 </body>
 </html>

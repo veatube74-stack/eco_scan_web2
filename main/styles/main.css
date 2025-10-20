@@ -454,15 +454,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
 /* Our misson section */
 .about{
     max-width:1120px;
@@ -1036,7 +1027,7 @@
 }
 
 .push-to-top i {
-    font-size: 18px;
+    font-size: 18px;  
     font-weight: bold;
 }
 
