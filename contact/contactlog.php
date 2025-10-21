@@ -18,7 +18,7 @@ session_start();
  <header class="header">
   <div class="container header-content">
     <div class="logo">
-      <a href="../main/main-log.html">
+      <a href="../main/main-log.php">
         <img src="../images/logo_yellow.png" alt="EcoScan">
         <h1>EcoScan</h1>
       </a>
@@ -51,7 +51,7 @@ session_start();
             </a>
           </li>
           <li>
-            <a href="../php/logou.php" class="logout-mobile">
+            <a href="../php/logout.php" class="logout-mobile">
                 <i class="fas fa-sign-out-alt"></i>
                 Выйти
             </a>
@@ -145,34 +145,39 @@ session_start();
     </form>
   </main>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container footer-content">
-      <div class="footer-brand">
-        <img src="../images/logo-white.png" alt="EcoScan logo" class="footer-logo" />
-        <h2 class="footer-title">ECO SCAN</h2>
-      </div>
-      <div class="footer-section">
-        <li class="footer-head">Навигация</li>
-        <ul>
-          <li><a href="../main/main-log.html">Главная</a></li>
-          <li><a href="../about/about.html">О нас</a></li>
-          <li><a href="../map/maplog.html">Карта</a></li>
-          <li><a href="./сontactlog.html">Связь с нами</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <li class="footer-head">Контакты</li>
-        <ul>
-          <li><a href="#"><i class="fas fa-envelope"></i> eco.scan06@gmail.com</a></li>
-          <li><a href="#"><i class="fas fa-phone"></i> +7 (777) 029-11-50</a></li>
-        </ul>
-      </div>
+<!-- Footer -->
+<footer class="footer">
+  <div class="container footer-content">
+    <div class="footer-brand">
+      <img src="../images/logo-white.png" alt="EcoScan logo" class="footer-logo" />
+      <h2 class="footer-title">ECO SCAN</h2>
     </div>
-    <div class="footer-bottom">
-      <p>Copyright © 2025 EcoScan, TOO</p>
+
+    <div class="footer-section">
+      <li class="footer-head">Навигация</li>
+      <ul>
+        <li><a href="../main/main-log.php">Главная</a></li>
+        <li><a href="../about/aboutlog.php">О нас</a></li>
+        <li><a href="../map/maplog.php">Карта</a></li>
+        <li><a href="../contact/contactlog.php">Связь с нами</a></li>
+      </ul>
     </div>
-  </footer>
+
+    <div class="footer-section">
+      <li class="footer-head">Контакты</li>
+      <ul>
+        <li><a href="#"><i class="fas fa-envelope"></i> eco.scan06@gmail.com</a></li>
+        <li><a href="#"><i class="fas fa-phone"></i> +7 (777) 029-11-50</a></li>
+        <li><a href="https://t.me/ecoscan06"><i class="fab fa-telegram"></i> ecoscan06</a></li>
+        <li><a href="https://www.instagram.com/ecoscan06?igsh=MXd1czRyZjR1bnc3eQ=="><i class="fab fa-instagram"></i> @ecoscan06</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>Copyright © 2025 EcoScan, TOO</p>
+  </div>
+</footer>
 
   <script src="./contact.js"></script>
   <script src="../profile/script.js"></script>

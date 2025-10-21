@@ -264,10 +264,10 @@ $email = $_SESSION['email'] ?? '';
     <div class="footer-section">
       <li class="footer-head">Навигация</li>
       <ul>
-        <li><a href="../main/main-log.html">Главная</a></li>
-        <li><a href="../about/about.html">О нас</a></li>
-        <li><a href="../map/maplog.html">Карта</a></li>
-        <li><a href="../contact/contact.html">Связь с нами</a></li>
+        <li><a href="../main/main-log.php">Главная</a></li>
+        <li><a href="../about/aboutlog.php">О нас</a></li>
+        <li><a href="../map/maplog.php">Карта</a></li>
+        <li><a href="../contact/contactlog.php">Связь с нами</a></li>
       </ul>
     </div>
 

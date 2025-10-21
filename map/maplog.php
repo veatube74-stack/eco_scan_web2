@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -17,7 +20,7 @@
  <header class="header">
   <div class="container header-content">
     <div class="logo">
-      <a href="../main/main-log.html">
+      <a href="../main/main-log.php">
         <img src="../images/logo_yellow.png" alt="EcoScan">
         <h1>EcoScan</h1>
       </a>
@@ -195,10 +198,10 @@
     <div class="footer-section">
       <li class="footer-head">Навигация</li>
       <ul>
-        <li><a href="../main/main-log.html">Главная</a></li>
-        <li><a href="../about/about.html">О нас</a></li>
-        <li><a href="../map/maplog.html">Карта</a></li>
-        <li><a href="../contact/сontactlog.html">Связь с нами</a></li>
+        <li><a href="../main/main-log.php">Главная</a></li>
+        <li><a href="../about/aboutlog.php">О нас</a></li>
+        <li><a href="../map/maplog.php">Карта</a></li>
+        <li><a href="../contact/contactlog.php">Связь с нами</a></li>
       </ul>
     </div>
 
