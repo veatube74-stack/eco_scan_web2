@@ -207,7 +207,7 @@ window.addEventListener('click', (e) => {
 //     }
 // });
 
-ocument.getElementById('loginForm').addEventListener('submit', (e) => {
+document.getElementById('loginForm').addEventListener('submit', (e) => {
     e.preventDefault(); // блокируем стандартную отправку
 
     const username = document.getElementById('loginUsername').value.trim();
