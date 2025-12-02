@@ -3,10 +3,10 @@ session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-$servername = "localhost";
-$username = "root";
-$dbpassword = "";
-$dbname = "ecoscan";
+$servername = getenv('DB_HOST') ?: 'db';
+$username = getenv('DB_USER') ?: 'ecoscan_user';
+$dbpassword = getenv('DB_PASSWORD') ?: 'ecoscan_pass';
+$dbname = getenv('DB_NAME') ?: 'ecoscan';
 
 $conn = new mysqli($servername, $username, $dbpassword, $dbname);
 if ($conn->connect_error) {

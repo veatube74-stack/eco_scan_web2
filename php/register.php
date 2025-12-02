@@ -24,10 +24,10 @@ if ($password !== $confirm_password) {
 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
 // --- Пример сохранения в базу (MySQLi) ---
-$servername = "localhost";
-$username = "root";
-$dbpassword = ""; // если нет пароля на локалке — оставь пустым
-$dbname = "ecoscan"; // заменишь на свою базу
+$servername = getenv('DB_HOST') ?: 'db';
+$username = getenv('DB_USER') ?: 'ecoscan_user';
+$dbpassword = getenv('DB_PASSWORD') ?: 'ecoscan_pass';
+$dbname = getenv('DB_NAME') ?: 'ecoscan';
 
 $conn = new mysqli($servername, $username, $dbpassword, $dbname);
 

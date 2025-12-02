@@ -1,8 +1,8 @@
 <?php
-$host = 'localhost';
-$db   = 'ecoscan';
-$user = 'root';   // замени на своего пользователя MySQL
-$pass = '';       // пароль от MySQL (если есть)
+$host = getenv('DB_HOST') ?: 'db';
+$db   = getenv('DB_NAME') ?: 'ecoscan';
+$user = getenv('DB_USER') ?: 'ecoscan_user';
+$pass = getenv('DB_PASSWORD') ?: 'ecoscan_pass';
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
