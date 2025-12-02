@@ -7,6 +7,9 @@ session_start();
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EcoScan — Контакты</title>
+  <link rel="icon" href="../images/logo-green.png" type="image/png" sizes="any">
+  <link rel="icon" href="../images/logo-green.png" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../images/logo-green.png">
   <link rel="stylesheet" href="./contact.css">
   <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="../profile/styles/profile.css">

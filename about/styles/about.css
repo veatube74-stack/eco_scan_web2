@@ -579,7 +579,7 @@
     }
 }
 
-/* Advantages Section */
+/* Advantages Section - Обновленная версия */
 .advantages {
     padding: 80px 0;
 }
@@ -612,6 +612,7 @@
     margin-bottom: 30px;
     font-weight: 700;
     line-height: 1.2;
+    text-align: center; /* Центрируем заголовок */
 }
 
 .advantages-list {
@@ -622,10 +623,11 @@
 
 .advantages-list li {
     display: flex;
-    align-items: flex-start;
+    align-items: center; /* Вертикальное центрирование */
+    justify-content: flex-start; /* Выравнивание по левому краю, но с центрированием содержимого */
     gap: 15px;
     margin-bottom: 20px;
-    padding: 15px;
+    padding: 15px 20px; /* Увеличиваем горизонтальные отступы */
     background: white;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
@@ -640,58 +642,22 @@
 .advantages-list li i {
     color: var(--accent);
     font-size: 1.3rem;
-    margin-top: 2px;
     flex-shrink: 0;
+    /* Центрируем иконку вертикально */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px; /* Фиксированная минимальная ширина */
 }
 
 .advantages-list li span {
     font-size: 1.1rem;
     line-height: 1.6;
     color: #555;
+    text-align: left; /* Текст остается слева */
 }
 
-/* Адаптив для секции Advantages */
-@media (max-width: 900px) {
-    .advantages-content {
-        flex-direction: column;
-        gap: 40px;
-    }
-    
-    .advantages-text h2 {
-        font-size: 2rem;
-        text-align: center;
-    }
-    
-    .advantages-list li {
-        padding: 12px;
-    }
-    
-    .advantages-list li span {
-        font-size: 1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .advantages {
-        padding: 60px 0;
-    }
-    
-    .advantages-text h2 {
-        font-size: 1.8rem;
-    }
-    
-    .advantages-list li {
-        flex-direction: column;
-        text-align: center;
-        gap: 10px;
-    }
-    
-    .advantages-list li i {
-        margin-top: 0;
-    }
-}
-
-/* Goals Section */
+/* Goals Section - Обновленная версия */
 .goals {
     padding: 80px 0;
 }
@@ -713,6 +679,7 @@
     margin-bottom: 30px;
     font-weight: 700;
     line-height: 1.2;
+    text-align: center; /* Центрируем заголовок */
 }
 
 .goals-list {
@@ -723,10 +690,11 @@
 
 .goals-list li {
     display: flex;
-    align-items: flex-start;
+    align-items: center; /* Вертикальное центрирование */
+    justify-content: flex-start; /* Выравнивание по левому краю, но с центрированием содержимого */
     gap: 15px;
     margin-bottom: 18px;
-    padding: 15px;
+    padding: 15px 20px; /* Увеличиваем горизонтальные отступы */
     background: #f8f9fa;
     border-radius: 10px;
     border-left: 4px solid var(--accent);
@@ -741,14 +709,19 @@
 .goals-list li i {
     color: var(--accent);
     font-size: 1.3rem;
-    margin-top: 2px;
     flex-shrink: 0;
+    /* Центрируем иконку вертикально */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px; /* Фиксированная минимальная ширина */
 }
 
 .goals-list li span {
     font-size: 1.1rem;
     line-height: 1.6;
     color: #555;
+    text-align: left; /* Текст остается слева */
 }
 
 .goals-image {
@@ -762,52 +735,164 @@
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-/* Адаптив для секции Goals */
+/* Адаптив для секций Advantages и Goals */
 @media (max-width: 900px) {
+    .advantages-content,
     .goals-content {
-        flex-direction: column-reverse;
+        flex-direction: column;
         gap: 40px;
     }
     
+    .advantages-text h2,
     .goals-text h2 {
         font-size: 2rem;
-        text-align: center;
     }
     
+    .advantages-list li,
     .goals-list li {
-        padding: 12px;
+        padding: 14px 16px; /* Немного уменьшаем отступы на мобильных */
+        gap: 12px; /* Уменьшаем расстояние между иконкой и текстом */
+        justify-content: flex-start; /* Галочки остаются слева */
     }
     
+    .advantages-list li span,
     .goals-list li span {
         font-size: 1rem;
+    }
+    
+    /* Для мобильных можно немного уменьшить иконки, но не обязательно */
+    .advantages-list li i,
+    .goals-list li i {
+        font-size: 1.2rem;
+        min-width: 22px;
+    }
+}
+
+@media (max-width: 768px) {
+    .advantages-list li,
+    .goals-list li {
+        padding: 12px 14px;
+        gap: 10px;
     }
 }
 
 @media (max-width: 480px) {
+    .advantages,
     .goals {
         padding: 60px 0;
     }
     
+    .advantages-text h2,
     .goals-text h2 {
         font-size: 1.8rem;
     }
     
+    .advantages-list li,
     .goals-list li {
-        flex-direction: column;
-        text-align: center;
+        padding: 12px;
         gap: 10px;
+        margin-bottom: 15px;
     }
     
+    .advantages-list li span,
+    .goals-list li span {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+    
+    /* Для очень маленьких экранов можно уменьшить иконки */
+    .advantages-list li i,
     .goals-list li i {
-        margin-top: 0;
+        font-size: 1.1rem;
+        min-width: 20px;
     }
 }
 
-.img {
-  padding: 80px 0;
+/* Для экстремально маленьких экранов */
+@media (max-width: 360px) {
+    .advantages-list li,
+    .goals-list li {
+        padding: 10px;
+        gap: 8px;
+    }
+    
+    .advantages-list li span,
+    .goals-list li span {
+        font-size: 0.9rem;
+    }
+    
+    .advantages-list li i,
+    .goals-list li i {
+        font-size: 1rem;
+        min-width: 18px;
+    }
 }
 
-.img img {
-  width: 90%;
-  margin-left: 75px;
+
+/* ===== Roadmap & Our Team Sections ===== */
+.img-row {
+  padding: 60px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.img-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Адаптив для Roadmap & Our Team */
+@media (max-width: 900px) {
+  .img-row {
+    padding: 40px 0;
+  }
+  
+  .img-container {
+    padding: 0 15px;
+  }
+  
+  .img-container img {
+    border-radius: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .img-row {
+    padding: 30px 0;
+  }
+  
+  .img-container {
+    padding: 0 10px;
+  }
+  
+  .img-container img {
+    border-radius: 8px;
+  }
+}
+
+/* Убираем старые стили для .img, если они были */
+.img {
+  padding: 40px 0;
+}
+
+/* Для очень маленьких экранов - дополнительные правки */
+@media (max-width: 480px) {
+  .img-row {
+    padding: 25px 0;
+  }
+  
+  .img-container img {
+    border-radius: 6px;
+  }
 }
